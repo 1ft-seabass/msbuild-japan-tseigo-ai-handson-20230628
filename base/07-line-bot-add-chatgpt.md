@@ -1,0 +1,1 @@
+# ChatGPT API の仕組みの反映
