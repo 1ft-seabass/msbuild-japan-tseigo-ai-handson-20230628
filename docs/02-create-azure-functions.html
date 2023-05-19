@@ -7,12 +7,12 @@
         <meta property="og:type" content="article">
         <meta property="og:url" content="02-create-azure-functions.html">
         <meta property="og:image" content="https://i.gyazo.com/800eb533b2b3a652c4e9973a62bb9f97.png">
-        <meta property="og:title" content="[タイトル] Azure Functions の作成">
-        <meta property="og:description" content="詳細説明">
+        <meta property="og:title" content="[Azure Functions でつくる LINE Bot + OpenAI 社 ChatGPT AI ハンズオン] Azure Functions の作成">
+        <meta property="og:description" content="Azure Functions でつくる LINE Bot + OpenAI 社 ChatGPT AI ハンズオン">
         <meta property="og:locale" content="ja">
-        <title>[タイトル] Azure Functions の作成</title>
+        <title>[Azure Functions でつくる LINE Bot + OpenAI 社 ChatGPT AI ハンズオン] Azure Functions の作成</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="description" content="詳細説明">
+        <meta name="description" content="Azure Functions でつくる LINE Bot + OpenAI 社 ChatGPT AI ハンズオン">
         <meta name="generator" content="HonKit 3.7.4">
         
         
@@ -78,7 +78,7 @@
     <link rel="next" href="03-create-http-trigger.html" />
     
     
-    <link rel="prev" href="01-start.html" />
+    <link rel="prev" href="01-introduction.html" />
     
 
     </head>
@@ -131,11 +131,56 @@
             
 
             
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="00-preparation/01-line-developer-login.html">
+            
+                <a href="00-preparation/01-line-developer-login.html">
+            
+                    
+                    LINE アカウント
+            
+                </a>
+            
+
+            
         </li>
     
-        <li class="chapter " data-level="1.3" data-path="01-start.html">
+        <li class="chapter " data-level="1.2.2" data-path="00-preparation/02-create-linebot.html">
             
-                <a href="01-start.html">
+                <a href="00-preparation/02-create-linebot.html">
+            
+                    
+                    LINE Bot
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="00-preparation/03-get-chatgpt-api-key.html">
+            
+                <a href="00-preparation/03-get-chatgpt-api-key.html">
+            
+                    
+                    ChatGPT API キーの取得
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="01-introduction.html">
+            
+                <a href="01-introduction.html">
             
                     
                     はじめに
@@ -283,6 +328,86 @@
                                 <section class="normal markdown-section">
                                 
                                 <h1 id="azure-functions-の作成"><a name="azure-functions-の作成" class="plugin-anchor" href="#azure-functions-の作成"><i class="fa fa-link" aria-hidden="true"></i></a>Azure Functions の作成</h1>
+<h2 id="関数の作成開始"><a name="関数の作成開始" class="plugin-anchor" href="#関数の作成開始"><i class="fa fa-link" aria-hidden="true"></i></a>関数の作成開始</h2>
+<p><img src="https://i.gyazo.com/ef684a5b0532318a0a1e0379c70ec61a.png" alt="ef684a5b0532318a0a1e0379c70ec61a"></p>
+<p>Azure アカウントを使用して Azure Portal <a href="https://portal.azure.com/" target="_blank">https://portal.azure.com/</a> にサインインします。</p>
+<p><img src="https://i.gyazo.com/ffadd594958b662230275c9ff562bcce.png" alt="ffadd594958b662230275c9ff562bcce"></p>
+<p>左のメニューより、ホーム <a href="https://portal.azure.com/#home" target="_blank">https://portal.azure.com/#home</a> に移動します。</p>
+<p><img src="https://i.gyazo.com/92da0ca59d2547869d9f997beddf3439.png" alt="92da0ca59d2547869d9f997beddf3439"></p>
+<p>リソースの作成をクリックします。</p>
+<p><img src="https://i.gyazo.com/18809e2576d3c0d5bc233e3d849ba379.png" alt="18809e2576d3c0d5bc233e3d849ba379"></p>
+<p>「関数」を検索フィールドに入力して Enter キーを押して検索します。</p>
+<p><img src="https://i.gyazo.com/085fe05d8781a17d020280da2d98641b.png" alt="085fe05d8781a17d020280da2d98641b"></p>
+<p>「関数アプリ」が出てきます。</p>
+<p><img src="https://i.gyazo.com/8ef3333fc7c7236818da2ce59212967e.png" alt="8ef3333fc7c7236818da2ce59212967e"></p>
+<p>「関数アプリ」の作成ボタンをクリックすると、さらに「関数アプリ」というボタンが出てくるのでクリックします。</p>
+<h2 id="関数アプリの設定"><a name="関数アプリの設定" class="plugin-anchor" href="#関数アプリの設定"><i class="fa fa-link" aria-hidden="true"></i></a>関数アプリの設定</h2>
+<p><img src="https://i.gyazo.com/a0e673bbaa78b0388b73f545dd12d21f.png" alt="a0e673bbaa78b0388b73f545dd12d21f"></p>
+<p>関数アプリの作成画面です。</p>
+<ul>
+<li>サブスクリプション<ul>
+<li>お使いのサブスクリプションを選択</li>
+</ul>
+</li>
+<li>リソースグループ<ul>
+<li>新規作成をクリックして handson-functions-chatgpt-linebot と名前を入力して OK をクリックしてリソースグループを作成します</li>
+</ul>
+</li>
+<li>関数アプリ名<ul>
+<li>事前に半角英数字で自分の名前を決めておきます。私の場合は tseigo にしました。</li>
+<li><code>handson-202306-&lt;半角英数字の自分の名前&gt;-linebot-chatgpt</code> とします。</li>
+</ul>
+</li>
+<li>コードまたはコンテナー イメージをデプロイしますか?<ul>
+<li>コード</li>
+</ul>
+</li>
+<li>ランタイムスタック<ul>
+<li>Node.js</li>
+</ul>
+</li>
+<li>バージョン<ul>
+<li>18 LTS</li>
+</ul>
+</li>
+<li>地域<ul>
+<li>Japan East</li>
+</ul>
+</li>
+<li>オペレーティング システム<ul>
+<li>Windows</li>
+</ul>
+</li>
+<li>ホスティング オプションとプラン<ul>
+<li>消費量 (サーバーレス)</li>
+</ul>
+</li>
+</ul>
+<p>設定できたら、確認および作成ボタンをクリックします。</p>
+<p><img src="https://i.gyazo.com/3d61fd8a9b0210ae78f642b2b37614e9.png" alt="3d61fd8a9b0210ae78f642b2b37614e9"></p>
+<p>作成ボタンを選択します。 </p>
+<p><img src="https://i.gyazo.com/cbc77018caea0a006236e1d0ef09eca4.png" alt="cbc77018caea0a006236e1d0ef09eca4"></p>
+<p>デプロイがはじめります。デプロイには 1 ～ 3 分かかりますので待ちましょう。</p>
+<p><img src="https://i.gyazo.com/2d1aa3876867405c079a62c6b2b1e43f.png" alt="2d1aa3876867405c079a62c6b2b1e43f"></p>
+<p>デプロイが完了しました。</p>
+<h2 id="azure-関数アプリの確認"><a name="azure-関数アプリの確認" class="plugin-anchor" href="#azure-関数アプリの確認"><i class="fa fa-link" aria-hidden="true"></i></a>Azure 関数アプリの確認</h2>
+<p><img src="https://i.gyazo.com/2d1aa3876867405c079a62c6b2b1e43f.png" alt="2d1aa3876867405c079a62c6b2b1e43f"></p>
+<p>デプロイが完了したら、リソースに移動ボタンをクリックします。</p>
+<p><img src="https://i.gyazo.com/41121be1e02159d5128c92fd5dd1c1b5.png" alt="41121be1e02159d5128c92fd5dd1c1b5"></p>
+<p>リソースを確認します。</p>
+<p><img src="https://i.gyazo.com/bf6e49af3b6d5eb714b165cd01bca08a.png" alt="bf6e49af3b6d5eb714b165cd01bca08a"></p>
+<p>URL をクリックして今回作成した Functions が動いていることも確認しましょう。</p>
+<p><img src="https://i.gyazo.com/367fa4fe388525143e2cc65c1698ee74.jpg" alt="367fa4fe388525143e2cc65c1698ee74"></p>
+<p>このような画面が確認できるはずです。</p>
+<p>📝参考資料</p>
+<ul>
+<li>Azure Functions を使用したサーバーレス ロジックの作成 - Training | Microsoft Learn<ul>
+<li><a href="https://learn.microsoft.com/ja-jp/training/modules/create-serverless-logic-with-azure-functions/" target="_blank">https://learn.microsoft.com/ja-jp/training/modules/create-serverless-logic-with-azure-functions/</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="http-トリガーをつくっていきましょう！"><a name="http-トリガーをつくっていきましょう！" class="plugin-anchor" href="#http-トリガーをつくっていきましょう！"><i class="fa fa-link" aria-hidden="true"></i></a>HTTP トリガーをつくっていきましょう！</h2>
+<p><img src="https://i.gyazo.com/5fd4ddf3339a0b0da492aaac3956e5a9.png" alt="5fd4ddf3339a0b0da492aaac3956e5a9"></p>
 
                                 
                                 </section>
@@ -310,7 +435,7 @@
 
             
                 
-                <a href="01-start.html" class="navigation navigation-prev " aria-label="Previous page: はじめに">
+                <a href="01-introduction.html" class="navigation navigation-prev " aria-label="Previous page: はじめに">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
@@ -326,7 +451,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Azure Functions の作成","level":"1.4","depth":1,"next":{"title":"LINE Bot 用の HTTP トリガー作成","level":"1.5","depth":1,"path":"03-create-http-trigger.md","ref":"03-create-http-trigger.md","articles":[]},"previous":{"title":"はじめに","level":"1.3","depth":1,"path":"01-start.md","ref":"01-start.md","articles":[]},"dir":"ltr"},"config":{"plugins":["anchors","hide-published-with","copy-code-button","intopic-toc","back-to-top-button"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","mode":"nested","maxDepth":6,"isCollapsed":true,"isScrollspyActive":true,"visible":true,"label":"In this article"},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"back-to-top-button":{},"copy-code-button":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"タイトル","language":"ja","gitbook":"*","description":"詳細説明"},"file":{"path":"02-create-azure-functions.md","mtime":"2023-05-15T07:54:48.285Z","type":"markdown"},"gitbook":{"version":"3.7.4","time":"2023-05-15T07:58:05.903Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Azure Functions の作成","level":"1.4","depth":1,"next":{"title":"LINE Bot 用の HTTP トリガー作成","level":"1.5","depth":1,"path":"03-create-http-trigger.md","ref":"03-create-http-trigger.md","articles":[]},"previous":{"title":"はじめに","level":"1.3","depth":1,"path":"01-introduction.md","ref":"01-introduction.md","articles":[]},"dir":"ltr"},"config":{"plugins":["anchors","hide-published-with","copy-code-button","intopic-toc","back-to-top-button"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","mode":"nested","maxDepth":6,"isCollapsed":true,"isScrollspyActive":true,"visible":true,"label":"In this article"},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"back-to-top-button":{},"copy-code-button":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Azure Functions でつくる LINE Bot + OpenAI 社 ChatGPT AI ハンズオン","language":"ja","gitbook":"*","description":"Azure Functions でつくる LINE Bot + OpenAI 社 ChatGPT AI ハンズオン"},"file":{"path":"02-create-azure-functions.md","mtime":"2023-05-19T07:19:47.733Z","type":"markdown"},"gitbook":{"version":"3.7.4","time":"2023-05-19T08:08:36.725Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>

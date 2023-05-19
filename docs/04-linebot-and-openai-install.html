@@ -7,12 +7,12 @@
         <meta property="og:type" content="article">
         <meta property="og:url" content="04-linebot-and-openai-install.html">
         <meta property="og:image" content="https://i.gyazo.com/800eb533b2b3a652c4e9973a62bb9f97.png">
-        <meta property="og:title" content="[タイトル] 必要ライブラリのインストール">
-        <meta property="og:description" content="詳細説明">
+        <meta property="og:title" content="[Azure Functions でつくる LINE Bot + OpenAI 社 ChatGPT AI ハンズオン] 必要ライブラリのインストール">
+        <meta property="og:description" content="Azure Functions でつくる LINE Bot + OpenAI 社 ChatGPT AI ハンズオン">
         <meta property="og:locale" content="ja">
-        <title>[タイトル] 必要ライブラリのインストール</title>
+        <title>[Azure Functions でつくる LINE Bot + OpenAI 社 ChatGPT AI ハンズオン] 必要ライブラリのインストール</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="description" content="詳細説明">
+        <meta name="description" content="Azure Functions でつくる LINE Bot + OpenAI 社 ChatGPT AI ハンズオン">
         <meta name="generator" content="HonKit 3.7.4">
         
         
@@ -131,11 +131,56 @@
             
 
             
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="00-preparation/01-line-developer-login.html">
+            
+                <a href="00-preparation/01-line-developer-login.html">
+            
+                    
+                    LINE アカウント
+            
+                </a>
+            
+
+            
         </li>
     
-        <li class="chapter " data-level="1.3" data-path="01-start.html">
+        <li class="chapter " data-level="1.2.2" data-path="00-preparation/02-create-linebot.html">
             
-                <a href="01-start.html">
+                <a href="00-preparation/02-create-linebot.html">
+            
+                    
+                    LINE Bot
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="00-preparation/03-get-chatgpt-api-key.html">
+            
+                <a href="00-preparation/03-get-chatgpt-api-key.html">
+            
+                    
+                    ChatGPT API キーの取得
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="01-introduction.html">
+            
+                <a href="01-introduction.html">
             
                     
                     はじめに
@@ -283,6 +328,44 @@
                                 <section class="normal markdown-section">
                                 
                                 <h1 id="必要ライブラリのインストール"><a name="必要ライブラリのインストール" class="plugin-anchor" href="#必要ライブラリのインストール"><i class="fa fa-link" aria-hidden="true"></i></a>必要ライブラリのインストール</h1>
+<p>LINE Bot や OpenAI の ChatGPT API を使うためのライブラリをインストールします。</p>
+<p><img src="https://i.gyazo.com/10c68a7da390ab7374a903908a2e61ad.png" alt="10c68a7da390ab7374a903908a2e61ad"></p>
+<p>関数アプリの設定画面に戻っています。</p>
+<p><img src="https://i.gyazo.com/a962db0206cc97c74e29251a900f3c08.png" alt="a962db0206cc97c74e29251a900f3c08"></p>
+<p>左メニューからコンソールを探します。探したらクリックします。</p>
+<p><img src="https://i.gyazo.com/00fbed0d1e04f3d44aef493d9ed7f7e4.png" alt="00fbed0d1e04f3d44aef493d9ed7f7e4"></p>
+<p>この関数アプリ全体の設定ができるコンソールが起動します。</p>
+<h2 id="ライブラリのインストール"><a name="ライブラリのインストール" class="plugin-anchor" href="#ライブラリのインストール"><i class="fa fa-link" aria-hidden="true"></i></a>ライブラリのインストール</h2>
+<pre><code>npm init
+</code></pre><p>コンソールでこちらのコマンドを入力して Enter キーをクリックします。これで npm パッケージマネージャの初期設定を行います。</p>
+<p><img src="https://i.gyazo.com/e0a5b0caaca6b76cd8d1ee8ab3fac892.png" alt="e0a5b0caaca6b76cd8d1ee8ab3fac892"></p>
+<p>なにもエラーが出ず入力待ちになれば成功です。</p>
+<pre><code>npm install @line/bot-sdk openai axios
+</code></pre><p>コンソールでこちらのコマンドを入力して Enter キーをクリックします。<code>@line/bot-sdk</code> ・ <code>openai</code> ・ <code>axios</code> の 3 つのライブラリをインストールします。</p>
+<ul>
+<li><code>@line/bot-sdk</code><ul>
+<li>LINE Bot を作るライブラリ</li>
+</ul>
+</li>
+<li><code>openai</code><ul>
+<li>OpenAI 社の ChatGPT API を扱うライブラリ</li>
+</ul>
+</li>
+<li><code>axios</code><ul>
+<li>他の HTTP API につなぐライブラリ（念のためのインストール）</li>
+</ul>
+</li>
+</ul>
+<p>このような役割を見越してインストールしました。このインストールには 1 ～ 2 分かかるのでお待ちください。</p>
+<p><img src="https://i.gyazo.com/76e112df1ff77820236ac3582ac1d55a.png" alt="76e112df1ff77820236ac3582ac1d55a"></p>
+<pre><code class="lang-text">added 56 packages, and audited 57 packages in 36s
+
+15 packages are looking for funding
+  run `npm fund` for details
+
+found 0 vulnerabilities
+</code></pre>
+<p>インストールが完了するとこのようなメッセージが出て、ライブラリのインストールが完了します。</p>
 
                                 
                                 </section>
@@ -326,7 +409,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"必要ライブラリのインストール","level":"1.6","depth":1,"next":{"title":"LINE Bot に設定を反映","level":"1.7","depth":1,"path":"05-line-bot-setting.md","ref":"05-line-bot-setting.md","articles":[]},"previous":{"title":"LINE Bot 用の HTTP トリガー作成","level":"1.5","depth":1,"path":"03-create-http-trigger.md","ref":"03-create-http-trigger.md","articles":[]},"dir":"ltr"},"config":{"plugins":["anchors","hide-published-with","copy-code-button","intopic-toc","back-to-top-button"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","mode":"nested","maxDepth":6,"isCollapsed":true,"isScrollspyActive":true,"visible":true,"label":"In this article"},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"back-to-top-button":{},"copy-code-button":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"タイトル","language":"ja","gitbook":"*","description":"詳細説明"},"file":{"path":"04-linebot-and-openai-install.md","mtime":"2023-05-15T07:55:06.837Z","type":"markdown"},"gitbook":{"version":"3.7.4","time":"2023-05-15T07:58:05.903Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"必要ライブラリのインストール","level":"1.6","depth":1,"next":{"title":"LINE Bot に設定を反映","level":"1.7","depth":1,"path":"05-line-bot-setting.md","ref":"05-line-bot-setting.md","articles":[]},"previous":{"title":"LINE Bot 用の HTTP トリガー作成","level":"1.5","depth":1,"path":"03-create-http-trigger.md","ref":"03-create-http-trigger.md","articles":[]},"dir":"ltr"},"config":{"plugins":["anchors","hide-published-with","copy-code-button","intopic-toc","back-to-top-button"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","mode":"nested","maxDepth":6,"isCollapsed":true,"isScrollspyActive":true,"visible":true,"label":"In this article"},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"back-to-top-button":{},"copy-code-button":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Azure Functions でつくる LINE Bot + OpenAI 社 ChatGPT AI ハンズオン","language":"ja","gitbook":"*","description":"Azure Functions でつくる LINE Bot + OpenAI 社 ChatGPT AI ハンズオン"},"file":{"path":"04-linebot-and-openai-install.md","mtime":"2023-05-19T07:43:08.516Z","type":"markdown"},"gitbook":{"version":"3.7.4","time":"2023-05-19T08:08:36.725Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>

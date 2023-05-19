@@ -7,12 +7,12 @@
         <meta property="og:type" content="article">
         <meta property="og:url" content="03-create-http-trigger.html">
         <meta property="og:image" content="https://i.gyazo.com/800eb533b2b3a652c4e9973a62bb9f97.png">
-        <meta property="og:title" content="[タイトル] LINE Bot 用の HTTP トリガー作成">
-        <meta property="og:description" content="詳細説明">
+        <meta property="og:title" content="[Azure Functions でつくる LINE Bot + OpenAI 社 ChatGPT AI ハンズオン] LINE Bot 用の HTTP トリガー作成">
+        <meta property="og:description" content="Azure Functions でつくる LINE Bot + OpenAI 社 ChatGPT AI ハンズオン">
         <meta property="og:locale" content="ja">
-        <title>[タイトル] LINE Bot 用の HTTP トリガー作成</title>
+        <title>[Azure Functions でつくる LINE Bot + OpenAI 社 ChatGPT AI ハンズオン] LINE Bot 用の HTTP トリガー作成</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="description" content="詳細説明">
+        <meta name="description" content="Azure Functions でつくる LINE Bot + OpenAI 社 ChatGPT AI ハンズオン">
         <meta name="generator" content="HonKit 3.7.4">
         
         
@@ -131,11 +131,56 @@
             
 
             
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="00-preparation/01-line-developer-login.html">
+            
+                <a href="00-preparation/01-line-developer-login.html">
+            
+                    
+                    LINE アカウント
+            
+                </a>
+            
+
+            
         </li>
     
-        <li class="chapter " data-level="1.3" data-path="01-start.html">
+        <li class="chapter " data-level="1.2.2" data-path="00-preparation/02-create-linebot.html">
             
-                <a href="01-start.html">
+                <a href="00-preparation/02-create-linebot.html">
+            
+                    
+                    LINE Bot
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="00-preparation/03-get-chatgpt-api-key.html">
+            
+                <a href="00-preparation/03-get-chatgpt-api-key.html">
+            
+                    
+                    ChatGPT API キーの取得
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="01-introduction.html">
+            
+                <a href="01-introduction.html">
             
                     
                     はじめに
@@ -283,6 +328,54 @@
                                 <section class="normal markdown-section">
                                 
                                 <h1 id="line-bot-用の-http-トリガー作成"><a name="line-bot-用の-http-トリガー作成" class="plugin-anchor" href="#line-bot-用の-http-トリガー作成"><i class="fa fa-link" aria-hidden="true"></i></a>LINE Bot 用の HTTP トリガー作成</h1>
+<p>LINE Bot の基礎として HTTP のレスポンスを返答する Functions の HTTP トリガーを作成します。</p>
+<p><img src="https://i.gyazo.com/a5d20c8c9aefed4ac6bf9222137f97fc.png" alt="a5d20c8c9aefed4ac6bf9222137f97fc"></p>
+<p>左メニューから「関数」をクリックして、関数を作る画面を表示します。作成ボタンをクリックします。</p>
+<p><img src="https://i.gyazo.com/8e6e943ab6091a496868da409084cec1.png" alt="8e6e943ab6091a496868da409084cec1"></p>
+<p>関数の作成画面が表示されるので、</p>
+<ul>
+<li>開発環境<ul>
+<li>ポータルでの開発</li>
+</ul>
+</li>
+<li>テンプレート<ul>
+<li>HTTP trigger</li>
+</ul>
+</li>
+</ul>
+<p>を選択して、作成ボタンをクリックします。作成には 1 ～ 2 分ほど時間がかかるので待ちましょう。</p>
+<p><img src="https://i.gyazo.com/5c1aea297b149048e0ce8ab818893dfc.png" alt="5c1aea297b149048e0ce8ab818893dfc"></p>
+<p>HTTP トリガーが作成されました。</p>
+<p><img src="https://i.gyazo.com/1c78d968fd718706be3b4e7e1b5f5dc2.png" alt="1c78d968fd718706be3b4e7e1b5f5dc2"></p>
+<p>左メニューから「コードとテスト」をクリックすると、ポータル上でコード編集やテストができる画面が表示されます。</p>
+<p>こちらでソースコードの反映を行っていきます。</p>
+<h2 id="動作チェック"><a name="動作チェック" class="plugin-anchor" href="#動作チェック"><i class="fa fa-link" aria-hidden="true"></i></a>動作チェック</h2>
+<p><img src="https://i.gyazo.com/d77d17fdd71d8cf2c7b0e3e0e6b1ded9.png" alt="d77d17fdd71d8cf2c7b0e3e0e6b1ded9"></p>
+<p>関数 URL の取得ボタンをクリックします。default のキーの URL 値を確認します。</p>
+<p><img src="https://i.gyazo.com/18d333595f02ff206ecc40b124a6ba86.png" alt="18d333595f02ff206ecc40b124a6ba86"></p>
+<p>こちらのコピーボタンをクリックします。この関数の URL がコピーされます。</p>
+<p><img src="https://i.gyazo.com/27c3397a6ac0b76de20dfd01aa72e0b8.png" alt="27c3397a6ac0b76de20dfd01aa72e0b8"></p>
+<p>ブラウザで別タブを表示して URL をアドレスバーにペーストして Enter キーを押してアクセスしてみましょう。<code>This HTTP triggered function executed successfully. Pass a name in the query string or in the request body for a personalized response.</code> という今回のソースコードのレスポンスが表示されます。</p>
+<pre><code class="lang-js"><span class="hljs-built_in">module</span>.exports = <span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">context, req</span>) </span>{
+    context.log(<span class="hljs-string">&apos;JavaScript HTTP trigger function processed a request.&apos;</span>);
+
+    <span class="hljs-keyword">const</span> name = (req.query.name || (req.body &amp;&amp; req.body.name));
+    <span class="hljs-keyword">const</span> responseMessage = name
+        ? <span class="hljs-string">&quot;Hello, &quot;</span> + name + <span class="hljs-string">&quot;. This HTTP triggered function executed successfully.&quot;</span>
+        : <span class="hljs-string">&quot;This HTTP triggered function executed successfully. Pass a name in the query string or in the request body for a personalized response.&quot;</span>;
+
+    context.res = {
+        <span class="hljs-comment">// status: 200, /* Defaults to 200 */</span>
+        <span class="hljs-attr">body</span>: responseMessage
+    };
+}
+</code></pre>
+<p>実際にはこちらの動作しているソースコードの <code>responseMessage</code> のあたりです。</p>
+<p>これで動作確認もできました。</p>
+<p><img src="https://i.gyazo.com/eaf7cb01b60b6dd936dbcba6c6aad6f2.png" alt="eaf7cb01b60b6dd936dbcba6c6aad6f2"></p>
+<p>一旦、HTTP トリガーの詳細画面から右上の × ボタンをクリックして、関数アプリの設定画面に戻ります。</p>
+<p><img src="https://i.gyazo.com/10c68a7da390ab7374a903908a2e61ad.png" alt="10c68a7da390ab7374a903908a2e61ad"></p>
+<p>関数アプリの設定画面に戻りました。</p>
 
                                 
                                 </section>
@@ -326,7 +419,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"LINE Bot 用の HTTP トリガー作成","level":"1.5","depth":1,"next":{"title":"必要ライブラリのインストール","level":"1.6","depth":1,"path":"04-linebot-and-openai-install.md","ref":"04-linebot-and-openai-install.md","articles":[]},"previous":{"title":"Azure Functions の作成","level":"1.4","depth":1,"path":"02-create-azure-functions.md","ref":"02-create-azure-functions.md","articles":[]},"dir":"ltr"},"config":{"plugins":["anchors","hide-published-with","copy-code-button","intopic-toc","back-to-top-button"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","mode":"nested","maxDepth":6,"isCollapsed":true,"isScrollspyActive":true,"visible":true,"label":"In this article"},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"back-to-top-button":{},"copy-code-button":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"タイトル","language":"ja","gitbook":"*","description":"詳細説明"},"file":{"path":"03-create-http-trigger.md","mtime":"2023-05-15T07:54:59.123Z","type":"markdown"},"gitbook":{"version":"3.7.4","time":"2023-05-15T07:58:05.903Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"LINE Bot 用の HTTP トリガー作成","level":"1.5","depth":1,"next":{"title":"必要ライブラリのインストール","level":"1.6","depth":1,"path":"04-linebot-and-openai-install.md","ref":"04-linebot-and-openai-install.md","articles":[]},"previous":{"title":"Azure Functions の作成","level":"1.4","depth":1,"path":"02-create-azure-functions.md","ref":"02-create-azure-functions.md","articles":[]},"dir":"ltr"},"config":{"plugins":["anchors","hide-published-with","copy-code-button","intopic-toc","back-to-top-button"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","mode":"nested","maxDepth":6,"isCollapsed":true,"isScrollspyActive":true,"visible":true,"label":"In this article"},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"back-to-top-button":{},"copy-code-button":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Azure Functions でつくる LINE Bot + OpenAI 社 ChatGPT AI ハンズオン","language":"ja","gitbook":"*","description":"Azure Functions でつくる LINE Bot + OpenAI 社 ChatGPT AI ハンズオン"},"file":{"path":"03-create-http-trigger.md","mtime":"2023-05-19T07:34:08.284Z","type":"markdown"},"gitbook":{"version":"3.7.4","time":"2023-05-19T08:08:36.725Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
