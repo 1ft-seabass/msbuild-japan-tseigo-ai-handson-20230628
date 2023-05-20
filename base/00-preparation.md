@@ -4,7 +4,7 @@
 
 - OpenAI 社のアカウント
 - Microsoft Azure アカウント
-- LINE アカウントが
+- LINE アカウント
 - お使いのスマートフォンで LINE アプリケーションがインストールされてチャットができること
 - OpenAI 社 ChatGPT API キーがあること
 
@@ -12,11 +12,29 @@
 
 ## OpenAI 社のアカウントの取得
 
-（作成中）
+![e87f6ca928239a4f4318995f3000b692](https://i.gyazo.com/e87f6ca928239a4f4318995f3000b692.jpg)
+
+OpenAI 社のトップページ https://openai.com/ の右上のメニューから Sign up ボタンをクリックします。
+
+![2fe8702eb8814bf040e8c19f977ef5a8](https://i.gyazo.com/2fe8702eb8814bf040e8c19f977ef5a8.png)
+
+Sign up ページが表示されるので、Email アドレスでアカウントを作成しましょう。
+
+![8f6cf00010c16d8d03172ac647273379](https://i.gyazo.com/8f6cf00010c16d8d03172ac647273379.png)
+
+アカウントが作成できるとアプリの選択ページ https://platform.openai.com/apps が表示されるので API をクリックします。
+
+![c23a9f0bd362823347f92d420e4ab185](https://i.gyazo.com/c23a9f0bd362823347f92d420e4ab185.png)
+
+このような API ページ https://platform.openai.com/ が表示されます。
 
 ## Microsoft Azure アカウントの取得
 
-（作成中）
+📝参考資料
+- 演習 - Azure アカウントを作成する - Training | Microsoft Learn
+  - https://learn.microsoft.com/ja-jp/training/modules/create-an-azure-account/3-exercise-create-an-azure-account
+- Azure の基礎の概要 - Training | Microsoft Learn
+  - https://learn.microsoft.com/ja-jp/training/modules/intro-to-azure-fundamentals/
 
 ## LINE Developers に LINE アカウントでログイン
 
