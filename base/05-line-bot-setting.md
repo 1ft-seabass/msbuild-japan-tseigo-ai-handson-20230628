@@ -13,24 +13,29 @@
 コードエディタのコードをすべて選択して以下のコードで上書きします。
 
 ```js
+// LINE Bot SDK ライブラリの読み込み
 const line = require('@line/bot-sdk');
 
+// チャンネルアクセストークンとチャネルシークレット設定
 const config = {
     channelAccessToken: 'channelAccessToken',
     channelSecret:  'channelSecret',
 };
 
+// LINE Bot SDK ライブラリを呼び出しつつ設定
 const client = new line.Client(config);
 
 module.exports = async function (context, req) {
     context.log('LINE Bot start...');
     if (req.query.message || (req.body && req.body.events)) {
         if (req.body && req.body.events[0]) {
+            // 返答用に受信したメッセージをそのまま入れてオウム返しに
             const message = {
                 type: "text",
                 text: req.body.events[0].message.text
             }
             context.log(message);
+            // 実際に LINE にオウム返しする処理
             if (req.body.events[0].replyToken) {
                 client.replyMessage(
                     req.body.events[0].replyToken,
@@ -45,6 +50,7 @@ module.exports = async function (context, req) {
         }
     }
     else {
+        // LINE 以外のアクセスだとこちらを返信（ブラウザ確認用）
         context.res = {
             status: 200,
             body: "Hello! LINE Bot + Azure Functions!"
@@ -56,6 +62,7 @@ module.exports = async function (context, req) {
 上書きできたら、LINE Bot の設定を反映します。
 
 ```js
+// チャンネルアクセストークンとチャネルシークレット設定
 const config = {
     channelAccessToken: 'channelAccessToken',
     channelSecret:  'channelSecret',

@@ -334,24 +334,29 @@
 <p>コードとテストをクリックします。</p>
 <p><img src="https://i.gyazo.com/17ac6ce60f75b9d7733257cfb12368e8.png" alt="17ac6ce60f75b9d7733257cfb12368e8"></p>
 <p>コードエディタのコードをすべて選択して以下のコードで上書きします。</p>
-<pre><code class="lang-js"><span class="hljs-keyword">const</span> line = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;@line/bot-sdk&apos;</span>);
+<pre><code class="lang-js"><span class="hljs-comment">// LINE Bot SDK ライブラリの読み込み</span>
+<span class="hljs-keyword">const</span> line = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;@line/bot-sdk&apos;</span>);
 
+<span class="hljs-comment">// チャンネルアクセストークンとチャネルシークレット設定</span>
 <span class="hljs-keyword">const</span> config = {
     <span class="hljs-attr">channelAccessToken</span>: <span class="hljs-string">&apos;channelAccessToken&apos;</span>,
     <span class="hljs-attr">channelSecret</span>:  <span class="hljs-string">&apos;channelSecret&apos;</span>,
 };
 
+<span class="hljs-comment">// LINE Bot SDK ライブラリを呼び出しつつ設定</span>
 <span class="hljs-keyword">const</span> client = <span class="hljs-keyword">new</span> line.Client(config);
 
 <span class="hljs-built_in">module</span>.exports = <span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">context, req</span>) </span>{
     context.log(<span class="hljs-string">&apos;LINE Bot start...&apos;</span>);
     <span class="hljs-keyword">if</span> (req.query.message || (req.body &amp;&amp; req.body.events)) {
         <span class="hljs-keyword">if</span> (req.body &amp;&amp; req.body.events[<span class="hljs-number">0</span>]) {
+            <span class="hljs-comment">// 返答用に受信したメッセージをそのまま入れてオウム返しに</span>
             <span class="hljs-keyword">const</span> message = {
                 <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;text&quot;</span>,
                 <span class="hljs-attr">text</span>: req.body.events[<span class="hljs-number">0</span>].message.text
             }
             context.log(message);
+            <span class="hljs-comment">// 実際に LINE にオウム返しする処理</span>
             <span class="hljs-keyword">if</span> (req.body.events[<span class="hljs-number">0</span>].replyToken) {
                 client.replyMessage(
                     req.body.events[<span class="hljs-number">0</span>].replyToken,
@@ -366,6 +371,7 @@
         }
     }
     <span class="hljs-keyword">else</span> {
+        <span class="hljs-comment">// LINE 以外のアクセスだとこちらを返信（ブラウザ確認用）</span>
         context.res = {
             <span class="hljs-attr">status</span>: <span class="hljs-number">200</span>,
             <span class="hljs-attr">body</span>: <span class="hljs-string">&quot;Hello! LINE Bot + Azure Functions!&quot;</span>
@@ -374,7 +380,8 @@
 };
 </code></pre>
 <p>上書きできたら、LINE Bot の設定を反映します。</p>
-<pre><code class="lang-js"><span class="hljs-keyword">const</span> config = {
+<pre><code class="lang-js"><span class="hljs-comment">// チャンネルアクセストークンとチャネルシークレット設定</span>
+<span class="hljs-keyword">const</span> config = {
     <span class="hljs-attr">channelAccessToken</span>: <span class="hljs-string">&apos;channelAccessToken&apos;</span>,
     <span class="hljs-attr">channelSecret</span>:  <span class="hljs-string">&apos;channelSecret&apos;</span>,
 };
@@ -457,7 +464,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"LINE Bot に設定を反映","level":"1.7","depth":1,"next":{"title":"LINE Bot でオウム返しを試す","level":"1.8","depth":1,"path":"06-line-bot-check.md","ref":"06-line-bot-check.md","articles":[]},"previous":{"title":"必要ライブラリのインストール","level":"1.6","depth":1,"path":"04-linebot-and-openai-install.md","ref":"04-linebot-and-openai-install.md","articles":[]},"dir":"ltr"},"config":{"plugins":["anchors","hide-published-with","copy-code-button","intopic-toc","back-to-top-button"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","mode":"nested","maxDepth":6,"isCollapsed":true,"isScrollspyActive":true,"visible":true,"label":"In this article"},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"back-to-top-button":{},"copy-code-button":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Azure Functions でつくる LINE Bot + OpenAI 社 ChatGPT AI ハンズオン","language":"ja","gitbook":"*","description":"Azure Functions でつくる LINE Bot + OpenAI 社 ChatGPT AI ハンズオン"},"file":{"path":"05-line-bot-setting.md","mtime":"2023-05-22T05:43:54.364Z","type":"markdown"},"gitbook":{"version":"3.7.4","time":"2023-05-22T12:33:59.184Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"LINE Bot に設定を反映","level":"1.7","depth":1,"next":{"title":"LINE Bot でオウム返しを試す","level":"1.8","depth":1,"path":"06-line-bot-check.md","ref":"06-line-bot-check.md","articles":[]},"previous":{"title":"必要ライブラリのインストール","level":"1.6","depth":1,"path":"04-linebot-and-openai-install.md","ref":"04-linebot-and-openai-install.md","articles":[]},"dir":"ltr"},"config":{"plugins":["anchors","hide-published-with","copy-code-button","intopic-toc","back-to-top-button"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","mode":"nested","maxDepth":6,"isCollapsed":true,"isScrollspyActive":true,"visible":true,"label":"In this article"},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"back-to-top-button":{},"copy-code-button":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Azure Functions でつくる LINE Bot + OpenAI 社 ChatGPT AI ハンズオン","language":"ja","gitbook":"*","description":"Azure Functions でつくる LINE Bot + OpenAI 社 ChatGPT AI ハンズオン"},"file":{"path":"05-line-bot-setting.md","mtime":"2023-05-22T13:27:59.288Z","type":"markdown"},"gitbook":{"version":"3.7.4","time":"2023-05-22T13:32:29.213Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
