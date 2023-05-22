@@ -2,7 +2,9 @@
 
 ![image](https://i.gyazo.com/4bb4c0bffb3c961ea749ec833e2e826b.jpg)
 
-LINE Developers の右上のメニューから自分の LINE アカウントでログインします
+LINE アカウントは、お使いのスマートフォンで LINE アプリでログインができていれば LINE アカウントが使える状況ですのでご安心ください。
+
+LINE Developers の右上のメニューから自分の LINE アカウントでログインします。
 
 https://developers.line.biz/ja/
 

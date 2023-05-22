@@ -86,6 +86,11 @@ channelSecret:  'channelSecret',
 
 設定できたらコードを保存します。
 
+📝参考資料
+- Azure FunctionsでLINE Bot作成 - Qiita
+  - https://qiita.com/RyogaTakao/items/a86522d560178f83652c
+
+
 ## 関数 URL を取得して動作確認
 
 ![d77d17fdd71d8cf2c7b0e3e0e6b1ded9](https://i.gyazo.com/d77d17fdd71d8cf2c7b0e3e0e6b1ded9.png)

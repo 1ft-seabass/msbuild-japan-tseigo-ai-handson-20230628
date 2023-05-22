@@ -327,7 +327,44 @@
     
                                 <section class="normal markdown-section">
                                 
-                                
+                                <h1 id="openai-社-chatgpt-api-キーの取得"><a name="openai-社-chatgpt-api-キーの取得" class="plugin-anchor" href="#openai-社-chatgpt-api-キーの取得"><i class="fa fa-link" aria-hidden="true"></i></a>OpenAI 社 ChatGPT API キーの取得</h1>
+<h2 id="api-キーの取得"><a name="api-キーの取得" class="plugin-anchor" href="#api-キーの取得"><i class="fa fa-link" aria-hidden="true"></i></a>API キーの取得</h2>
+<p><img src="https://i.gyazo.com/59721bc470b73edf42fe34f4ae88a4e3.png" alt="59721bc470b73edf42fe34f4ae88a4e3"></p>
+<p>ログインして API ページ <a href="https://platform.openai.com/" target="_blank">https://platform.openai.com/</a> が表示した状態で、右上のユーザー名の書いてあるところをクリックしてユーザーメニューを出します。View API Keys をクリックします。</p>
+<p><img src="https://i.gyazo.com/95ab50ffd208cbf94b7dac63817a9552.png" alt="95ab50ffd208cbf94b7dac63817a9552"></p>
+<p>API keys ページ <a href="https://platform.openai.com/account/api-keys" target="_blank">https://platform.openai.com/account/api-keys</a> に移動します。Create new secret key ボタンをクリックします。</p>
+<p><img src="https://i.gyazo.com/b547ba48e0b280cc1c7ad9f56aeeb7f8.png" alt="b547ba48e0b280cc1c7ad9f56aeeb7f8"></p>
+<p>今後分かりやすくするためのキーの名前を決めれるので <code>Handson key</code> と入力して、Create secret key ボタンをクリックします。</p>
+<p><img src="https://i.gyazo.com/41e1468938164db104271c8c146083c8.png" alt="41e1468938164db104271c8c146083c8"></p>
+<p>Create new secret key のウィンドウになり、キーが表示されます。このキーは <strong>この画面一度切り</strong> しか表示されないので、手元のテキストエディタにメモしておきましょう。</p>
+<p>ちゃんとメモができたら Done ボタンをクリックします。</p>
+<h2 id="支払い情報の登録"><a name="支払い情報の登録" class="plugin-anchor" href="#支払い情報の登録"><i class="fa fa-link" aria-hidden="true"></i></a>支払い情報の登録</h2>
+<p>この状態ですと、API キーは作られましたが、支払い情報がないために課金ができず指標することができません。</p>
+<p>支払い情報の登録をしましょう。</p>
+<p><img src="https://i.gyazo.com/34caadfece28092285cc87d983d56cf8.png" alt="34caadfece28092285cc87d983d56cf8"></p>
+<p>左メニューから Billing をクリックします。</p>
+<p><img src="https://i.gyazo.com/a79b300f4769e6d8daaaaa85d927ca2b.png" alt="a79b300f4769e6d8daaaaa85d927ca2b"></p>
+<p>Billing overview という支払い情報のページが表示されます。</p>
+<p><img src="https://i.gyazo.com/6d7651d7a393f03773fd72baf1cbe594.png" alt="6d7651d7a393f03773fd72baf1cbe594"></p>
+<p>Set up paid account ボタンをクリックします。Set up payment method が聞かれるので、今回のハンズオンでは個人利用なので I&apos;m an indivisual をクリックします。</p>
+<p><img src="https://i.gyazo.com/658ce920bb6dcc1871eec194bf32473a.png" alt="658ce920bb6dcc1871eec194bf32473a"></p>
+<p>クレジットカード情報を入力して Set up payment method ボタンをクリックして支払い情報の登録を完了します。</p>
+<h2 id="利用制限-usage-limits-を設定"><a name="利用制限-usage-limits-を設定" class="plugin-anchor" href="#利用制限-usage-limits-を設定"><i class="fa fa-link" aria-hidden="true"></i></a>利用制限 Usage limits を設定</h2>
+<p>API の利用は使ったら使った分だけ課金される従量課金のため、小さめ金額で制限を設けておきます。</p>
+<p><img src="https://i.gyazo.com/335882d8f13f4ef022727ee8a7ae3ba4.png" alt="335882d8f13f4ef022727ee8a7ae3ba4"></p>
+<p>Usage limits をクリックします。</p>
+<p><img src="https://i.gyazo.com/7f58eac4de0591a3a104183c57502776.png" alt="7f58eac4de0591a3a104183c57502776"></p>
+<p>Hard limit は「毎月この使用量しきい値に達すると、それ以降のリクエストは拒否されます」。Soft limit は「毎月この使用量のしきい値に達すると、通知メールが送信されます」。ですので、使いすぎを即ブロックしたい場合は Hard limit が重要です。</p>
+<p>私の場合は、余裕をもって Hard limit を $24 Soft limit は $12 に設定しましたが。皆さんの状況に合わせて設定しましょう。</p>
+<p>これで、うっかりたくさん試して使いすぎになりそうなときでも安心です。</p>
+<p>📝参考資料</p>
+<ul>
+<li>ChatGPT APIキー取得までの手順 - Qiita<ul>
+<li><a href="https://qiita.com/kotattsu3/items/b936a65d173a5d39dad0" target="_blank">https://qiita.com/kotattsu3/items/b936a65d173a5d39dad0</a></li>
+</ul>
+</li>
+</ul>
+
                                 
                                 </section>
                             
@@ -370,7 +407,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"ChatGPT API キーの取得","level":"1.2.3","depth":2,"next":{"title":"はじめに","level":"1.3","depth":1,"path":"01-introduction.md","ref":"01-introduction.md","articles":[]},"previous":{"title":"LINE Bot","level":"1.2.2","depth":2,"path":"00-preparation/02-create-linebot.md","ref":"00-preparation/02-create-linebot.md","articles":[]},"dir":"neutral"},"config":{"plugins":["anchors","hide-published-with","copy-code-button","intopic-toc","back-to-top-button"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","mode":"nested","maxDepth":6,"isCollapsed":true,"isScrollspyActive":true,"visible":true,"label":"In this article"},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"back-to-top-button":{},"copy-code-button":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Azure Functions でつくる LINE Bot + OpenAI 社 ChatGPT AI ハンズオン","language":"ja","gitbook":"*","description":"Azure Functions でつくる LINE Bot + OpenAI 社 ChatGPT AI ハンズオン"},"file":{"path":"00-preparation/03-get-chatgpt-api-key.md","mtime":"2023-05-18T07:27:32.161Z","type":"markdown"},"gitbook":{"version":"3.7.4","time":"2023-05-20T11:03:01.231Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"ChatGPT API キーの取得","level":"1.2.3","depth":2,"next":{"title":"はじめに","level":"1.3","depth":1,"path":"01-introduction.md","ref":"01-introduction.md","articles":[]},"previous":{"title":"LINE Bot","level":"1.2.2","depth":2,"path":"00-preparation/02-create-linebot.md","ref":"00-preparation/02-create-linebot.md","articles":[]},"dir":"ltr"},"config":{"plugins":["anchors","hide-published-with","copy-code-button","intopic-toc","back-to-top-button"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","mode":"nested","maxDepth":6,"isCollapsed":true,"isScrollspyActive":true,"visible":true,"label":"In this article"},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"back-to-top-button":{},"copy-code-button":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Azure Functions でつくる LINE Bot + OpenAI 社 ChatGPT AI ハンズオン","language":"ja","gitbook":"*","description":"Azure Functions でつくる LINE Bot + OpenAI 社 ChatGPT AI ハンズオン"},"file":{"path":"00-preparation/03-get-chatgpt-api-key.md","mtime":"2023-05-22T06:54:21.679Z","type":"markdown"},"gitbook":{"version":"3.7.4","time":"2023-05-22T12:33:59.184Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
