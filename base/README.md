@@ -22,7 +22,15 @@
 
 ## サポートスタッフご紹介
 
-（調整中）
+![](images/takaya.jpg)
+
+高矢 空（タカヤ ソラ）  
+https://takayasora.com/
+
+![](images/takeuchi.jpg)
+
+竹内 雅樹 (タケウチ マサキ)  
+https://news.microsoft.com/ja-jp/features/regain-your-voice-with-the-power-of-ai/
 
 ## 当日の流れ
 
