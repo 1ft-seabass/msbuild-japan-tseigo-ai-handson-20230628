@@ -13,3 +13,4 @@
 * [LINE Bot でオウム返しを試す](06-line-bot-check.md)
 * [ChatGPT API の仕組みの反映](07-line-bot-add-chatgpt.md)
 * [LINE Bot で ChatGPT 応答を試す](08-chatgpt-check.md)
+* [エクストラ](99-extra/99-extra-index.md)
