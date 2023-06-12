@@ -15,9 +15,9 @@ API keys ページ https://platform.openai.com/account/api-keys に移動しま�
 
 今後分かりやすくするためのキーの名前を決めれるので `Handson key` と入力して、Create secret key ボタンをクリックします。
 
-![41e1468938164db104271c8c146083c8](https://i.gyazo.com/41e1468938164db104271c8c146083c8.png)
+![96af348f170078f9dbaad47faa33c06d](https://i.gyazo.com/96af348f170078f9dbaad47faa33c06d.png)
 
-Create new secret key のウィンドウになり、キーが表示されます。このキーは **この画面一度切り** しか表示されないので、手元のテキストエディタにメモしておきましょう。
+Create new secret key のウィンドウになり、キーが表示されます。 `sk-` ではじまるものです。このキーは **この画面一度切り** しか表示されないので、手元のテキストエディタにメモしておきましょう。
 
 ちゃんとメモができたら Done ボタンをクリックします。
 

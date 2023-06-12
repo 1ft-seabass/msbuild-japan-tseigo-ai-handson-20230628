@@ -93,6 +93,10 @@ channelSecret:  'channelSecret',
 
 設定できたらコードを保存します。
 
+![31eede8af66e81f55fced6d86b4d749f](https://i.gyazo.com/31eede8af66e81f55fced6d86b4d749f.png)
+
+正しく入力されていれば channelSecret は文字数が少なく、channelAccessToken は文字数が多いものになります。
+
 📝参考資料
 - Azure FunctionsでLINE Bot作成 - Qiita
   - https://qiita.com/RyogaTakao/items/a86522d560178f83652c
