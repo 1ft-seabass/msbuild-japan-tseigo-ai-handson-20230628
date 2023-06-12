@@ -17,8 +17,9 @@ const copyFiles = [
   './base/04-linebot-and-openai-install.md',
   './base/05-line-bot-setting.md',
   './base/06-line-bot-check.md',
-  './base/07-line-bot-add-chatgpt.md',
-  './base/08-chatgpt-check.md',
+  './base/07-create-http-trigger-for-chatgpt.md',
+  './base/08-line-bot-add-chatgpt.md',
+  './base/09-chatgpt-check.md',
   './base/00-preparation/01-line-developer-login.md',
   './base/00-preparation/02-create-linebot.md',
   './base/00-preparation/03-get-chatgpt-api-key.md'

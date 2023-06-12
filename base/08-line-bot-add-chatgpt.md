@@ -2,7 +2,7 @@
 
 コードとテストに戻ります。
 
-![17ac6ce60f75b9d7733257cfb12368e8](https://i.gyazo.com/17ac6ce60f75b9d7733257cfb12368e8.png)
+![611c3fa73ac0238b1fc2a5ef6a08e73f](https://i.gyazo.com/611c3fa73ac0238b1fc2a5ef6a08e73f.png)
 
 コードエディタのコードをすべて選択して以下のコードで上書きします。
 
@@ -126,6 +126,40 @@ apiKey: 'apiKey',
 もし、ChatGPT API の API キーが `ABCDEFG` の場合は、両脇のシングルクオーテーションを
 残して書き換えるので `'ABCDEFG'` になります。
 
-![d6e5648f3a0abbdcf4c53a3a968ca40f](https://i.gyazo.com/d6e5648f3a0abbdcf4c53a3a968ca40f.png)
+![79454d3d75fd9c0628dffeb2547578a4](https://i.gyazo.com/79454d3d75fd9c0628dffeb2547578a4.png)
 
 設定できたらコードを保存します。
+
+![31eede8af66e81f55fced6d86b4d749f](https://i.gyazo.com/31eede8af66e81f55fced6d86b4d749f.png)
+
+正しく入力されていれば channelSecret は文字数が少なく、channelAccessToken は文字数が多いものになります。
+
+## 関数 URL を取得して動作確認
+
+![d77d17fdd71d8cf2c7b0e3e0e6b1ded9](https://i.gyazo.com/d77d17fdd71d8cf2c7b0e3e0e6b1ded9.png)
+
+関数 URL の取得ボタンをクリックします。default のキーの URL 値を確認します。
+
+![18d333595f02ff206ecc40b124a6ba86](https://i.gyazo.com/18d333595f02ff206ecc40b124a6ba86.png)
+
+こちらのコピーボタンをクリックします。この関数の URL がコピーされます。
+
+![f7b2644ff70d1a73668af462c0222f83](https://i.gyazo.com/f7b2644ff70d1a73668af462c0222f83.png)
+
+ブラウザで別タブを表示して URL をアドレスバーにペーストして Enter キーを押してアクセスしてみましょう。このような画面が表示されていれば、上手く動作しています！
+
+## LINE Developers の設定
+
+![8b4d67be0c5d4d5008b9e3b0722b2034](https://i.gyazo.com/8b4d67be0c5d4d5008b9e3b0722b2034.png)
+
+LINE Developers にアクセスして、今回動かしたい LINE Bot の設定ページにアクセスして Messaging API 設定 のページに移動します。
+
+![8e6c534186195512b410b3b938602003](https://i.gyazo.com/8e6c534186195512b410b3b938602003.png)
+
+スクロールして Webhook 設定 を探します。 Webhook の利用がオンになっていることを確認しましょう。確認できたら編集ボタンをクリックします。
+
+![c814481982f00d8ebb7658cd879607f2](https://i.gyazo.com/c814481982f00d8ebb7658cd879607f2.png)
+
+Webhook URL が編集できるので、さきほど確認した今回の関数 URL をペーストして更新ボタンをクリックします。
+
+これで LINE Bot の設定は完了です！

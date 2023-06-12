@@ -5,12 +5,12 @@
         <meta charset="UTF-8">
         <head prefix="og: https://ogp.me/ns# fb: https://ogp.me/ns/fb# article: https://ogp.me/ns/article#"></head>
         <meta property="og:type" content="article">
-        <meta property="og:url" content="08-chatgpt-check.html">
+        <meta property="og:url" content="07-create-http-trigger-for-chatgpt.html">
         <meta property="og:image" content="https://i.gyazo.com/ce0949d32c09d9cfe0a33306ed85a0e5.png">
-        <meta property="og:title" content="[Azure Functions でつくる LINE Bot + OpenAI 社 ChatGPT AI ハンズオン] LINE Bot で ChatGPT 応答を試す">
+        <meta property="og:title" content="[Azure Functions でつくる LINE Bot + OpenAI 社 ChatGPT AI ハンズオン] ChatGPT 用 LINE Bot 用の HTTP トリガー作成">
         <meta property="og:description" content="Azure Functions でつくる LINE Bot + OpenAI 社 ChatGPT AI ハンズオン">
         <meta property="og:locale" content="ja">
-        <title>[Azure Functions でつくる LINE Bot + OpenAI 社 ChatGPT AI ハンズオン] LINE Bot で ChatGPT 応答を試す</title>
+        <title>[Azure Functions でつくる LINE Bot + OpenAI 社 ChatGPT AI ハンズオン] ChatGPT 用 LINE Bot 用の HTTP トリガー作成</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="Azure Functions でつくる LINE Bot + OpenAI 社 ChatGPT AI ハンズオン">
         <meta name="generator" content="HonKit 3.7.4">
@@ -75,10 +75,10 @@
     <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="99-extra/98-troubleshooting.html" />
+    <link rel="next" href="08-line-bot-add-chatgpt.html" />
     
     
-    <link rel="prev" href="07-line-bot-add-chatgpt.html" />
+    <link rel="prev" href="06-line-bot-check.html" />
     
 
     </head>
@@ -256,9 +256,22 @@
             
         </li>
     
-        <li class="chapter " data-level="1.9" data-path="07-line-bot-add-chatgpt.html">
+        <li class="chapter active" data-level="1.9" data-path="07-create-http-trigger-for-chatgpt.html">
             
-                <a href="07-line-bot-add-chatgpt.html">
+                <a href="07-create-http-trigger-for-chatgpt.html">
+            
+                    
+                    ChatGPT 用 LINE Bot 用の HTTP トリガー作成
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10" data-path="08-line-bot-add-chatgpt.html">
+            
+                <a href="08-line-bot-add-chatgpt.html">
             
                     
                     ChatGPT API の仕組みの反映
@@ -269,9 +282,9 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.10" data-path="08-chatgpt-check.html">
+        <li class="chapter " data-level="1.11" data-path="09-chatgpt-check.html">
             
-                <a href="08-chatgpt-check.html">
+                <a href="09-chatgpt-check.html">
             
                     
                     LINE Bot で ChatGPT 応答を試す
@@ -282,7 +295,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.11" data-path="99-extra/98-troubleshooting.html">
+        <li class="chapter " data-level="1.12" data-path="99-extra/98-troubleshooting.html">
             
                 <a href="99-extra/98-troubleshooting.html">
             
@@ -295,7 +308,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.12" data-path="99-extra/99-extra-index.html">
+        <li class="chapter " data-level="1.13" data-path="99-extra/99-extra-index.html">
             
                 <a href="99-extra/99-extra-index.html">
             
@@ -338,7 +351,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="." >LINE Bot で ChatGPT 応答を試す</a>
+        <a href="." >ChatGPT 用 LINE Bot 用の HTTP トリガー作成</a>
     </h1>
 </div>
 
@@ -353,11 +366,50 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="line-bot-で-chatgpt-応答を試す"><a name="line-bot-で-chatgpt-応答を試す" class="plugin-anchor" href="#line-bot-で-chatgpt-応答を試す"><i class="fa fa-link" aria-hidden="true"></i></a>LINE Bot で ChatGPT 応答を試す</h1>
-<p>今回のプログラムでは、メッセージに対して ChatGPT から返答してくれます！</p>
-<p><img src="https://i.gyazo.com/006f7b52f5bd860c643bcad06095ddcb.jpg" alt="006f7b52f5bd860c643bcad06095ddcb"></p>
-<p>今回の LINE Bot にスマートフォンの LINE アプリで表示して、メッセージを送ってみましょう！</p>
-<p>うまくChatGPT から返答されるはずです！</p>
+                                <h1 id="chatgpt-用-line-bot-用の-http-トリガー作成"><a name="chatgpt-用-line-bot-用の-http-トリガー作成" class="plugin-anchor" href="#chatgpt-用-line-bot-用の-http-トリガー作成"><i class="fa fa-link" aria-hidden="true"></i></a>ChatGPT 用 LINE Bot 用の HTTP トリガー作成</h1>
+<p>ChatGPT 用 LINE Bot 用の HTTP トリガーを作成します。</p>
+<p><img src="https://i.gyazo.com/28e65ad227f43361c6aaca656c37ab24.png" alt="28e65ad227f43361c6aaca656c37ab24"></p>
+<p>まだ HttpTrigger1 の画面の場合は、上部のナビゲーションで関数のところをクリックして関数全体の画面に戻ります。</p>
+<p><img src="https://i.gyazo.com/6aab0eb798d369c459a488681c2a7dca.png" alt="6aab0eb798d369c459a488681c2a7dca"></p>
+<p>関数全体の画面に戻ったら、左メニューから「関数」をクリックして、関数を作る画面を表示します。作成ボタンをクリックします。</p>
+<p><img src="https://i.gyazo.com/8e6e943ab6091a496868da409084cec1.png" alt="8e6e943ab6091a496868da409084cec1"></p>
+<p>関数の作成画面が表示されるので、</p>
+<ul>
+<li>開発環境<ul>
+<li>ポータルでの開発</li>
+</ul>
+</li>
+<li>テンプレート<ul>
+<li>HTTP trigger</li>
+</ul>
+</li>
+</ul>
+<p>を選択します。</p>
+<p><img src="https://i.gyazo.com/77f15eb557c91e16fb1aa933b834100d.png" alt="77f15eb557c91e16fb1aa933b834100d"></p>
+<p>選択すると、下部にテンプレートの詳細が出てくるので、</p>
+<ul>
+<li>新しい関数<ul>
+<li>HttpTriggerChatGPT</li>
+</ul>
+</li>
+<li>Authorization level<ul>
+<li>Function そのまま</li>
+</ul>
+</li>
+</ul>
+<p>と設定して、作成ボタンをクリックします。作成には 1 ～ 2 分ほど時間がかかるので待ちましょう。</p>
+<p><img src="https://i.gyazo.com/bb55a59e287b34f7c7d093a620dd7c6b.png" alt="bb55a59e287b34f7c7d093a620dd7c6b"></p>
+<p>HTTP トリガーが作成されました。</p>
+<p><img src="https://i.gyazo.com/611c3fa73ac0238b1fc2a5ef6a08e73f.png" alt="611c3fa73ac0238b1fc2a5ef6a08e73f"></p>
+<p>左メニューから「コードとテスト」をクリックすると、ポータル上でコード編集やテストができる画面が表示されます。</p>
+<p>こちらでソースコードの反映を行っていきます。</p>
+<h2 id="動作チェック"><a name="動作チェック" class="plugin-anchor" href="#動作チェック"><i class="fa fa-link" aria-hidden="true"></i></a>動作チェック</h2>
+<p><img src="https://i.gyazo.com/d77d17fdd71d8cf2c7b0e3e0e6b1ded9.png" alt="d77d17fdd71d8cf2c7b0e3e0e6b1ded9"></p>
+<p>関数 URL の取得ボタンをクリックします。default のキーの URL 値を確認します。</p>
+<p><img src="https://i.gyazo.com/18d333595f02ff206ecc40b124a6ba86.png" alt="18d333595f02ff206ecc40b124a6ba86"></p>
+<p>こちらのコピーボタンをクリックします。この関数の URL がコピーされます。</p>
+<p><img src="https://i.gyazo.com/0b6b422e6e35da06470507f069f65f67.png" alt="0b6b422e6e35da06470507f069f65f67"></p>
+<p>ブラウザで別タブを表示して URL をアドレスバーにペーストして Enter キーを押してアクセスしてみましょう。<code>This HTTP triggered function executed successfully. Pass a name in the query string or in the request body for a personalized response.</code> という今回のソースコードのレスポンスが表示されます。</p>
 
                                 
                                 </section>
@@ -385,12 +437,12 @@
 
             
                 
-                <a href="07-line-bot-add-chatgpt.html" class="navigation navigation-prev " aria-label="Previous page: ChatGPT API の仕組みの反映">
+                <a href="06-line-bot-check.html" class="navigation navigation-prev " aria-label="Previous page: LINE Bot でオウム返しを試す">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="99-extra/98-troubleshooting.html" class="navigation navigation-next " aria-label="Next page: トラブルシューティング">
+                <a href="08-line-bot-add-chatgpt.html" class="navigation navigation-next " aria-label="Next page: ChatGPT API の仕組みの反映">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -401,7 +453,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"LINE Bot で ChatGPT 応答を試す","level":"1.10","depth":1,"next":{"title":"トラブルシューティング","level":"1.11","depth":1,"path":"99-extra/98-troubleshooting.md","ref":"99-extra/98-troubleshooting.md","articles":[]},"previous":{"title":"ChatGPT API の仕組みの反映","level":"1.9","depth":1,"path":"07-line-bot-add-chatgpt.md","ref":"07-line-bot-add-chatgpt.md","articles":[]},"dir":"ltr"},"config":{"plugins":["anchors","hide-published-with","copy-code-button","intopic-toc","back-to-top-button"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","mode":"nested","maxDepth":6,"isCollapsed":true,"isScrollspyActive":true,"visible":true,"label":"In this article"},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"back-to-top-button":{},"copy-code-button":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Azure Functions でつくる LINE Bot + OpenAI 社 ChatGPT AI ハンズオン","language":"ja","gitbook":"*","description":"Azure Functions でつくる LINE Bot + OpenAI 社 ChatGPT AI ハンズオン"},"file":{"path":"08-chatgpt-check.md","mtime":"2023-05-22T13:31:37.201Z","type":"markdown"},"gitbook":{"version":"3.7.4","time":"2023-06-12T07:07:18.401Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"ChatGPT 用 LINE Bot 用の HTTP トリガー作成","level":"1.9","depth":1,"next":{"title":"ChatGPT API の仕組みの反映","level":"1.10","depth":1,"path":"08-line-bot-add-chatgpt.md","ref":"08-line-bot-add-chatgpt.md","articles":[]},"previous":{"title":"LINE Bot でオウム返しを試す","level":"1.8","depth":1,"path":"06-line-bot-check.md","ref":"06-line-bot-check.md","articles":[]},"dir":"ltr"},"config":{"plugins":["anchors","hide-published-with","copy-code-button","intopic-toc","back-to-top-button"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","mode":"nested","maxDepth":6,"isCollapsed":true,"isScrollspyActive":true,"visible":true,"label":"In this article"},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"back-to-top-button":{},"copy-code-button":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Azure Functions でつくる LINE Bot + OpenAI 社 ChatGPT AI ハンズオン","language":"ja","gitbook":"*","description":"Azure Functions でつくる LINE Bot + OpenAI 社 ChatGPT AI ハンズオン"},"file":{"path":"07-create-http-trigger-for-chatgpt.md","mtime":"2023-06-12T07:50:42.944Z","type":"markdown"},"gitbook":{"version":"3.7.4","time":"2023-06-12T07:51:13.726Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
