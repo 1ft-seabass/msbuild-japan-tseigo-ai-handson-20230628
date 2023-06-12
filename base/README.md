@@ -22,12 +22,12 @@
 
 ## サポートスタッフご紹介
 
-![](images/takaya.jpg)
+<img src="https://media.licdn.com/dms/image/D5603AQFyM8BbshApEA/profile-displayphoto-shrink_800_800/0/1681583246561?e=2147483647&v=beta&t=yvLYD92tKiIEWzRxcoG258SiBCGF8r9BcgIK9Z-lzyQ" width="60%">
 
 高矢 空（タカヤ ソラ）  
 https://takayasora.com/
 
-![](images/takeuchi.jpg)
+<img src="https://media.licdn.com/dms/image/C5603AQHjP6iMBogT2w/profile-displayphoto-shrink_800_800/0/1645355227394?e=2147483647&v=beta&t=5hkQpQ1fiDhJ9xK1F0wjywMKrIuJT-uwF46q38liS6E" width="60%">
 
 竹内 雅樹 (タケウチ マサキ)  
 https://news.microsoft.com/ja-jp/features/regain-your-voice-with-the-power-of-ai/
