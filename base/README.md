@@ -34,25 +34,24 @@ https://news.microsoft.com/ja-jp/features/regain-your-voice-with-the-power-of-ai
 
 ## 当日の流れ
 
-MM/DD 曜日　HH:MM-HH:MM
+あくまで予定のものです。現地の進行・状況に応じて前後する可能性があります。
 
-- HH:MM-HH:MM
+6/28 水曜日　12:15-13:45
+
+- 12:15-12:25
   - はじめに
-- HH:MM-HH:MM
-  - 1
-  - 2
-  - 3
-- HH:MM-HH:MM
-  - 1
-  - 2
-  - 3
-- HH:MM-HH:MM
-  - 休憩
-- HH:MM-HH:MM
-  - 1
-  - 2
-  - 3
-- HH:MM-HH:MM
+- 12:25-12:40
+  - Azure Functions の作成
+  - LINE Bot 用の HTTP トリガー作成
+  - 必要ライブラリのインストール
+- 12:40-12:55
+  - LINE Bot に設定を反映
+  - LINE Bot でオウム返しを試す
+- 12:55-13:20
+  - ChatGPT 用 LINE Bot 用の HTTP トリガー作成
+  - ChatGPT API の仕組みの反映
+  - LINE Bot で ChatGPT 応答を試す
+- 13:20-13:45
   - 質疑応答
   - おわりに
 
