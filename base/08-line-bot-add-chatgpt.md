@@ -1,5 +1,9 @@
 # ChatGPT API の仕組みの反映
 
+![ed70a4d3ca98c50fe728b502955a7ad4](https://i.gyazo.com/ed70a4d3ca98c50fe728b502955a7ad4.png)
+
+Functions から ChatGPT API につなぐ設定をしたり、今回新しく作った HTTP トリガーが LINE Bot とやりとりできるように LINE Messaging API に Functions でつくったメッセージサーバの URL を教えてあげて、実際にやり取りできるようにします。
+
 コードとテストに戻ります。
 
 ![611c3fa73ac0238b1fc2a5ef6a08e73f](https://i.gyazo.com/611c3fa73ac0238b1fc2a5ef6a08e73f.png)

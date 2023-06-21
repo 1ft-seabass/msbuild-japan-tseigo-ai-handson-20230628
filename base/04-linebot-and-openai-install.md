@@ -1,5 +1,7 @@
 # 必要ライブラリのインストール
 
+![4fb8ec269670eb4d654590a405b8a2d6](https://i.gyazo.com/4fb8ec269670eb4d654590a405b8a2d6.png)
+
 LINE Bot や OpenAI の ChatGPT API を使うためのライブラリをインストールします。
 
 ![10c68a7da390ab7374a903908a2e61ad](https://i.gyazo.com/10c68a7da390ab7374a903908a2e61ad.png)

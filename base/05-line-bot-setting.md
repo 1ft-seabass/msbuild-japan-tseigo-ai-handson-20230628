@@ -1,5 +1,9 @@
 # LINE Bot に設定を反映
 
+![499d1894b011ecfea61759c11c6ea1e4](https://i.gyazo.com/499d1894b011ecfea61759c11c6ea1e4.png)
+
+LINE Bot と Functions がやりとりできるように LINE Messaging API に Functions でつくったメッセージサーバの URL を教えてあげて、実際にやり取りできるようにします。
+
 ![3090f8720206e665a1066d347a87e7d8](https://i.gyazo.com/3090f8720206e665a1066d347a87e7d8.png)
 
 左メニューから「関数」をクリックして、関数の一覧が表示されるので、さきほど作成した HttpTrigger1 をクリックします。

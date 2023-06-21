@@ -367,6 +367,15 @@
                                 <section class="normal markdown-section">
                                 
                                 <h1 id="はじめに"><a name="はじめに" class="plugin-anchor" href="#はじめに"><i class="fa fa-link" aria-hidden="true"></i></a>はじめに</h1>
+<p><img src="https://i.gyazo.com/006f7b52f5bd860c643bcad06095ddcb.jpg" alt="006f7b52f5bd860c643bcad06095ddcb"></p>
+<p>今回は、人間の投げかけた様々な質問に対して答えてくれる OpenAI 社の ChatGPT API の仕組みを、みなさんの LINE の LINE BOT に組み込んで、この画像のようにいつでも自分の手元で質問ができるものをつくってみます。</p>
+<p>おおまかには以下のような仕組みです。</p>
+<p><img src="https://i.gyazo.com/2b9c482dc632eed6be1cbdf9b3af652d.png" alt="2b9c482dc632eed6be1cbdf9b3af652d"></p>
+<ul>
+<li>LINE Messaging API で LINE BOT からのメッセージを Azure Functions でつくられたメッセージサーバにつなぎます</li>
+<li>Azure Functions は LINE から受け付けたメッセージを ChatGPT API へ質問として転送して聞きに行きます</li>
+<li>ChatGPT API は内容に応じて回答してくれるので Azure Functions でつくられたメッセージサーバが ChatGPT API の回答を LINE Messaging API 経由で LINE BOT に返答します。</li>
+</ul>
 <h2 id="azure-functions-とは"><a name="azure-functions-とは" class="plugin-anchor" href="#azure-functions-とは"><i class="fa fa-link" aria-hidden="true"></i></a>Azure Functions とは</h2>
 <p><img src="https://i.gyazo.com/2c7119a8e4c2adde838e16e373a321d7.jpg" alt="2c7119a8e4c2adde838e16e373a321d7"></p>
 <p><a href="https://azure.microsoft.com/ja-jp/products/functions" target="_blank">https://azure.microsoft.com/ja-jp/products/functions</a></p>
@@ -384,6 +393,12 @@
 <h2 id="openai-社の-chatgpt-api-とは"><a name="openai-社の-chatgpt-api-とは" class="plugin-anchor" href="#openai-社の-chatgpt-api-とは"><i class="fa fa-link" aria-hidden="true"></i></a>OpenAI 社の ChatGPT API とは</h2>
 <p><img src="https://i.gyazo.com/d7aa56ddf80436006420ecda37ea5514.png" alt="d7aa56ddf80436006420ecda37ea5514"></p>
 <p>Wikipedia <a href="https://ja.wikipedia.org/wiki/OpenAI" target="_blank">https://ja.wikipedia.org/wiki/OpenAI</a> より</p>
+<p>ChatGPT は、人工知能によって自然な会話ができる AI チャットサービスです。ユーザーが入力した質問に対して、まるで人間のように自然な対話形式で AI が答えます。</p>
+<p>マルバツゲームの相手をしたり、Linux システムをエミュレートすることができたり、プログラミングやデバッグが行うことができます。また、音楽、小説、脚本、詩、歌詞や作文などの創作活動もできます </p>
+<p>今回は「会話形式で質問に答えてくれる」役割を LINE BOT とつなぎこんでみます。</p>
+<h2 id="事前準備ができているとこんな状態"><a name="事前準備ができているとこんな状態" class="plugin-anchor" href="#事前準備ができているとこんな状態"><i class="fa fa-link" aria-hidden="true"></i></a>事前準備ができているとこんな状態</h2>
+<p><img src="https://i.gyazo.com/fcfa8391b44daeea26da946167189489.png" alt="fcfa8391b44daeea26da946167189489"></p>
+<p>LINE BOT と LINE Messaging API が設定できていて、Azure や ChatGPT API の準備ができています。これから、それぞれをつなげていきます。</p>
 <h2 id="それでははじめて行きましょう！"><a name="それでははじめて行きましょう！" class="plugin-anchor" href="#それでははじめて行きましょう！"><i class="fa fa-link" aria-hidden="true"></i></a>それでははじめて行きましょう！</h2>
 <p><img src="https://i.gyazo.com/5fd4ddf3339a0b0da492aaac3956e5a9.png" alt="5fd4ddf3339a0b0da492aaac3956e5a9"></p>
 
@@ -429,7 +444,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"はじめに","level":"1.3","depth":1,"next":{"title":"Azure Functions の作成","level":"1.4","depth":1,"path":"02-create-azure-functions.md","ref":"02-create-azure-functions.md","articles":[]},"previous":{"title":"ChatGPT API キーの取得","level":"1.2.3","depth":2,"path":"00-preparation/03-get-chatgpt-api-key.md","ref":"./00-preparation/03-get-chatgpt-api-key.md","articles":[]},"dir":"ltr"},"config":{"plugins":["anchors","hide-published-with","copy-code-button","intopic-toc","back-to-top-button"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","mode":"nested","maxDepth":6,"isCollapsed":true,"isScrollspyActive":true,"visible":true,"label":"In this article"},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"back-to-top-button":{},"copy-code-button":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Azure Functions でつくる LINE Bot + OpenAI 社 ChatGPT AI ハンズオン","language":"ja","gitbook":"*","description":"Azure Functions でつくる LINE Bot + OpenAI 社 ChatGPT AI ハンズオン"},"file":{"path":"01-introduction.md","mtime":"2023-05-19T06:49:42.266Z","type":"markdown"},"gitbook":{"version":"3.7.4","time":"2023-06-19T02:38:21.596Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"はじめに","level":"1.3","depth":1,"next":{"title":"Azure Functions の作成","level":"1.4","depth":1,"path":"02-create-azure-functions.md","ref":"02-create-azure-functions.md","articles":[]},"previous":{"title":"ChatGPT API キーの取得","level":"1.2.3","depth":2,"path":"00-preparation/03-get-chatgpt-api-key.md","ref":"./00-preparation/03-get-chatgpt-api-key.md","articles":[]},"dir":"ltr"},"config":{"plugins":["anchors","hide-published-with","copy-code-button","intopic-toc","back-to-top-button"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","mode":"nested","maxDepth":6,"isCollapsed":true,"isScrollspyActive":true,"visible":true,"label":"In this article"},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"back-to-top-button":{},"copy-code-button":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Azure Functions でつくる LINE Bot + OpenAI 社 ChatGPT AI ハンズオン","language":"ja","gitbook":"*","description":"Azure Functions でつくる LINE Bot + OpenAI 社 ChatGPT AI ハンズオン"},"file":{"path":"01-introduction.md","mtime":"2023-06-21T01:39:20.310Z","type":"markdown"},"gitbook":{"version":"3.7.4","time":"2023-06-21T01:56:33.604Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>

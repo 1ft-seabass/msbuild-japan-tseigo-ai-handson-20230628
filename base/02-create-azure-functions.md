@@ -1,5 +1,13 @@
 # Azure Functions の作成
 
+![61825e43452a627d97be9766b0de4c8d](https://i.gyazo.com/61825e43452a627d97be9766b0de4c8d.png)
+
+まず ChatGPT につなぐまえに LINE BOT と メッセージサーバとして Azure Functions を作成して LINE Messaging API 経由で、同じメッセージをそのまま返答する「オウム返し」をやってみましょう。
+
+![4fb8ec269670eb4d654590a405b8a2d6](https://i.gyazo.com/4fb8ec269670eb4d654590a405b8a2d6.png)
+
+ということで、Azure Functions の作成します。
+
 ## 関数の作成開始
 
 ![ef684a5b0532318a0a1e0379c70ec61a](https://i.gyazo.com/ef684a5b0532318a0a1e0379c70ec61a.png)

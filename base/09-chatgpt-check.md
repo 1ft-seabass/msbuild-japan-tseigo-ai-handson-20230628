@@ -1,5 +1,7 @@
 # LINE Bot で ChatGPT 応答を試す
 
+![1df3f1afad4e37bcebb92fdbb4425a15](https://i.gyazo.com/1df3f1afad4e37bcebb92fdbb4425a15.png)
+
 今回のプログラムでは、メッセージに対して ChatGPT から返答してくれます！
 
 ![006f7b52f5bd860c643bcad06095ddcb](https://i.gyazo.com/006f7b52f5bd860c643bcad06095ddcb.jpg)

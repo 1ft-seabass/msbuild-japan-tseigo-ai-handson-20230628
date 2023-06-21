@@ -1,5 +1,7 @@
 # LINE Bot 用の HTTP トリガー作成
 
+![4fb8ec269670eb4d654590a405b8a2d6](https://i.gyazo.com/4fb8ec269670eb4d654590a405b8a2d6.png)
+
 LINE Bot の基礎として HTTP のレスポンスを返答する Functions の HTTP トリガーを作成します。
 
 ![a5d20c8c9aefed4ac6bf9222137f97fc](https://i.gyazo.com/a5d20c8c9aefed4ac6bf9222137f97fc.png)

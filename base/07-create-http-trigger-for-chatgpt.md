@@ -1,5 +1,9 @@
 # ChatGPT 用 LINE Bot 用の HTTP トリガー作成
 
+![88c5934bb1d8f3c955a48c27b99e30bd](https://i.gyazo.com/88c5934bb1d8f3c955a48c27b99e30bd.png)
+
+いよいよ ChatGPT API との連携です。新しい ChatGPT 用 LINE Bot 用の HTTP トリガーをつくってつないでいきます。
+
 ChatGPT 用 LINE Bot 用の HTTP トリガーを作成します。
 
 ![28e65ad227f43361c6aaca656c37ab24](https://i.gyazo.com/28e65ad227f43361c6aaca656c37ab24.png)
