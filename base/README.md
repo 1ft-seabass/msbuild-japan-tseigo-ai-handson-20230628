@@ -63,6 +63,14 @@ https://news.microsoft.com/ja-jp/features/regain-your-voice-with-the-power-of-ai
 
 → [はじめに](01-introduction.md)
 
+## アンケートよろしくお願いします！
+
+![5029ac68901ce8c420e15c470043e50b](https://i.gyazo.com/5029ac68901ce8c420e15c470043e50b.png)
+
+↑ QR コードでもアクセス可能です
+
+→ [アンケートリンク](https://docs.google.com/forms/d/e/1FAIpQLSfgSo3fSP6R7UtelnIGPG9_vlfjX_yQwrnSinZhBo2QYtvhwA/viewform?usp=sf_link )
+
 ## お疲れ様でした
 
 ![image](https://i.gyazo.com/5a6aa1d064fcd403fa67091c7d0e417a.png)
