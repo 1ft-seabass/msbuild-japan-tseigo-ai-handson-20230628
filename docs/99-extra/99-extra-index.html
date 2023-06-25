@@ -365,6 +365,114 @@
                                 <section class="normal markdown-section">
                                 
                                 <h1 id="エクストラ"><a name="エクストラ" class="plugin-anchor" href="#エクストラ"><i class="fa fa-link" aria-hidden="true"></i></a>エクストラ</h1>
+<p>ここはハンズオンのメインの流れが終わったあとに、時間に余裕があればお伝えするエクストラページです。</p>
+<p>もちろん、ハンズオン後にさらに試してみるのも楽しいので、ぜひやってみてくださいー。</p>
+<h2 id="system-パラメータで事前に役割定義をしてキャラクターづけをしてみよう"><a name="system-パラメータで事前に役割定義をしてキャラクターづけをしてみよう" class="plugin-anchor" href="#system-パラメータで事前に役割定義をしてキャラクターづけをしてみよう"><i class="fa fa-link" aria-hidden="true"></i></a>system パラメータで事前に役割定義をしてキャラクターづけをしてみよう</h2>
+<p><a href="../08-line-bot-add-chatgpt.html">ChatGPT の LINE BOT の仕組み</a> のソースコードでは openai.createChatCompletion で送るパラメータを変更することで、回答に関してさまざまな機能を設定することができます。</p>
+<p>Create chat completion
+<a href="https://platform.openai.com/docs/api-reference/chat/create" target="_blank">https://platform.openai.com/docs/api-reference/chat/create</a></p>
+<p>詳しい説明は公式ドキュメントのこちらにあります。</p>
+<p><img src="https://i.gyazo.com/8918b96ab93f132c5cd05d701870716d.png" alt="8918b96ab93f132c5cd05d701870716d"></p>
+<p>ということで、今回はこの中で system という値を使ってみます。</p>
+<p><a href="https://github.com/openai/openai-cookbook/blob/main/examples/How_to_format_inputs_to_ChatGPT_models.ipynb" target="_blank">https://github.com/openai/openai-cookbook/blob/main/examples/How_to_format_inputs_to_ChatGPT_models.ipynb</a></p>
+<p>こちらには、</p>
+<blockquote>
+<p>Typically, a conversation will start with a system message that tells the assistant how to behave, followed by alternating user and assistant messages, but you are not required to follow this format.
+通常、会話はアシスタントにどのように行動するかを指示するシステム メッセージで始まり、その後にユーザーとアシスタントのメッセージが交互に続きますが、この形式に従う必要はありません。</p>
+</blockquote>
+<p>という説明があり、事前に役割定義できるので、キャラクターづけをしてみましょう。</p>
+<h3 id="変更する箇所を確認"><a name="変更する箇所を確認" class="plugin-anchor" href="#変更する箇所を確認"><i class="fa fa-link" aria-hidden="true"></i></a>変更する箇所を確認</h3>
+<pre><code class="lang-js">            <span class="hljs-comment">// ChatGPT API に質問する</span>
+            <span class="hljs-keyword">let</span> responseChatGPT;
+            <span class="hljs-keyword">try</span> {
+                responseChatGPT = <span class="hljs-keyword">await</span> openai.createChatCompletion({
+                    <span class="hljs-attr">model</span>: <span class="hljs-string">&quot;gpt-3.5-turbo&quot;</span>,
+                    <span class="hljs-attr">messages</span>: [
+                        {<span class="hljs-attr">role</span>: <span class="hljs-string">&quot;user&quot;</span>, <span class="hljs-attr">content</span>: currentMesssage}
+                    ],
+                });
+                context.log(responseChatGPT.data.choices[<span class="hljs-number">0</span>].message);
+            } <span class="hljs-keyword">catch</span>(e){
+                context.log(e);
+            }
+</code></pre>
+<p>もともとのソースコードです。 <code>messages.role</code> のところに <code>{role: &quot;system&quot;, content: &quot;キャラクター付け&quot;}</code> のように、はじめに追加していきます。</p>
+<h3 id="ちょっと元気に"><a name="ちょっと元気に" class="plugin-anchor" href="#ちょっと元気に"><i class="fa fa-link" aria-hidden="true"></i></a>ちょっと元気に</h3>
+<p>ちょっと元気よく、「あなたは相手の質問に対して元気よく回答するボットです。よろしくお願いします！」というキャラ付けをしてみます。</p>
+<p><img src="https://i.gyazo.com/2d2af49680d34afc614c00cb01489494.png" alt="2d2af49680d34afc614c00cb01489494"></p>
+<p>Functions のエディタで変更してみましょう。</p>
+<pre><code class="lang-js">            <span class="hljs-comment">// ChatGPT API に質問する</span>
+            <span class="hljs-keyword">let</span> responseChatGPT;
+            <span class="hljs-keyword">try</span> {
+                responseChatGPT = <span class="hljs-keyword">await</span> openai.createChatCompletion({
+                    <span class="hljs-attr">model</span>: <span class="hljs-string">&quot;gpt-3.5-turbo&quot;</span>,
+                    <span class="hljs-attr">messages</span>: [
+                        {<span class="hljs-attr">role</span>: <span class="hljs-string">&quot;system&quot;</span>, <span class="hljs-attr">content</span>: <span class="hljs-string">&quot;あなたは相手の質問に対して元気よく回答するボットです。よろしくお願いします！&quot;</span>},
+                        {<span class="hljs-attr">role</span>: <span class="hljs-string">&quot;user&quot;</span>, <span class="hljs-attr">content</span>: currentMesssage}
+                    ],
+                });
+                context.log(responseChatGPT.data.choices[<span class="hljs-number">0</span>].message);
+            } <span class="hljs-keyword">catch</span>(e){
+                context.log(e);
+            }
+</code></pre>
+<p>こう変更します。</p>
+<p><code>messages.role</code> のところに <code>{role: &quot;system&quot;, content: &quot;あなたは相手の質問に対して元気よく回答するボットです。よろしくお願いします！&quot;}</code> を加えました。</p>
+<p><img src="https://i.gyazo.com/42e05f4408d92b570878f62937afbaeb.png" alt="42e05f4408d92b570878f62937afbaeb"></p>
+<p>変更できたら、保存して LINE BOT でやり取りしてみましょう。</p>
+<p><img src="https://i.gyazo.com/0a8942b1f4c8ec4e4ff34bff0ffa2490.jpg" alt="0a8942b1f4c8ec4e4ff34bff0ffa2490"></p>
+<p>このように、結構元気なキャラクターになります。</p>
+<h3 id="わんちゃん-🐶🐺-風"><a name="わんちゃん-🐶🐺-風" class="plugin-anchor" href="#わんちゃん-🐶🐺-風"><i class="fa fa-link" aria-hidden="true"></i></a>わんちゃん 🐶🐺 風</h3>
+<pre><code class="lang-js">            <span class="hljs-comment">// ChatGPT API に質問する</span>
+            <span class="hljs-keyword">let</span> responseChatGPT;
+            <span class="hljs-keyword">try</span> {
+                responseChatGPT = <span class="hljs-keyword">await</span> openai.createChatCompletion({
+                    <span class="hljs-attr">model</span>: <span class="hljs-string">&quot;gpt-3.5-turbo&quot;</span>,
+                    <span class="hljs-attr">messages</span>: [
+                        {<span class="hljs-attr">role</span>: <span class="hljs-string">&quot;system&quot;</span>, <span class="hljs-attr">content</span>: <span class="hljs-string">&quot;あなたは、相手に忠実なゴールデンレトリバーですが、なんと人間の言葉を理解して、犬語で「わんわん！」と返答できます。&quot;</span>},
+                        {<span class="hljs-attr">role</span>: <span class="hljs-string">&quot;user&quot;</span>, <span class="hljs-attr">content</span>: currentMesssage}
+                    ],
+                });
+                context.log(responseChatGPT.data.choices[<span class="hljs-number">0</span>].message);
+            } <span class="hljs-keyword">catch</span>(e){
+                context.log(e);
+            }
+</code></pre>
+<p>こう変更します。</p>
+<p><code>messages.role</code> のところに <code>{role: &quot;system&quot;, content: &quot;あなたは、相手に忠実なゴールデンレトリバーですが、なんと人間の言葉を理解して、犬語で「わんわん！」と返答できます。&quot;}</code> を設定しました。</p>
+<p><img src="https://i.gyazo.com/ec2f1d4d0012d814d681bd04ca0ae352.jpg" alt="ec2f1d4d0012d814d681bd04ca0ae352"></p>
+<p>このように、わんちゃん 🐶🐺 風キャラクターになります。</p>
+<p><img src="https://i.gyazo.com/bd0108534a8757b6a943ad994298177b.jpg" alt="bd0108534a8757b6a943ad994298177b"></p>
+<p>犬種は？って聞くと、こんな風に答えてくれます。</p>
+<h3 id="めちゃくちゃ日本の歴史に造詣の深い説明上手な学者さん"><a name="めちゃくちゃ日本の歴史に造詣の深い説明上手な学者さん" class="plugin-anchor" href="#めちゃくちゃ日本の歴史に造詣の深い説明上手な学者さん"><i class="fa fa-link" aria-hidden="true"></i></a>めちゃくちゃ日本の歴史に造詣の深い説明上手な学者さん</h3>
+<pre><code class="lang-js">            <span class="hljs-comment">// ChatGPT API に質問する</span>
+            <span class="hljs-keyword">let</span> responseChatGPT;
+            <span class="hljs-keyword">try</span> {
+                responseChatGPT = <span class="hljs-keyword">await</span> openai.createChatCompletion({
+                    <span class="hljs-attr">model</span>: <span class="hljs-string">&quot;gpt-3.5-turbo&quot;</span>,
+                    <span class="hljs-attr">messages</span>: [
+                        {<span class="hljs-attr">role</span>: <span class="hljs-string">&quot;system&quot;</span>, <span class="hljs-attr">content</span>: <span class="hljs-string">&quot;あなたは、めちゃくちゃ日本の歴史に造詣の深い説明上手な学者です。質問の中で、なにか日本の歴史に関係のありそうなキーワードが会話にあれば、いい感じに相手にわかりやすく説明してください。&quot;</span>},
+                        {<span class="hljs-attr">role</span>: <span class="hljs-string">&quot;user&quot;</span>, <span class="hljs-attr">content</span>: currentMesssage}
+                    ],
+                });
+                context.log(responseChatGPT.data.choices[<span class="hljs-number">0</span>].message);
+            } <span class="hljs-keyword">catch</span>(e){
+                context.log(e);
+            }
+</code></pre>
+<p>こう変更します。</p>
+<p><code>messages.role</code> のところに <code>{role: &quot;system&quot;, content: &quot;あなたは、めちゃくちゃ日本の歴史に造詣の深い説明上手な学者です。質問の中で、なにか日本の歴史に関係のありそうなキーワードが会話にあれば、いい感じに相手にわかりやすく説明してください。&quot;}</code> を設定しました。</p>
+<p><img src="https://i.gyazo.com/ad912548cb7335c67ae426e3aa7aa754.jpg" alt="ad912548cb7335c67ae426e3aa7aa754"></p>
+<p>このように、ちょっと解説を入れてくれる学者さんになりました。</p>
+<h2 id="より突っ込んだ-tips"><a name="より突っ込んだ-tips" class="plugin-anchor" href="#より突っ込んだ-tips"><i class="fa fa-link" aria-hidden="true"></i></a>より突っ込んだ TIPS</h2>
+<p><img src="https://i.gyazo.com/430a59940d2c08b029b85682f66c667b.jpg" alt="430a59940d2c08b029b85682f66c667b"></p>
+<p>田中の研究してるネタより、いくつかご紹介します。質問の作り方に触れたものも多いので、参考になると思います。</p>
+<ul>
+<li><a href="https://www.1ft-seabass.jp/memo/2023/03/13/chatgpt-http-api-like-json-response-tips1/" target="_blank">いい感じのエアコン設定温度を JSON データで返答し HTTP API 的に ChatGPT が答えてくれる質問例のメモ – 1ft-seabass.jp.MEMO</a></li>
+<li><a href="https://www.1ft-seabass.jp/memo/2023/03/17/chatgpt-http-api-like-json-response-tips-with-node-red/" target="_blank">LED への RGB 値を JSON データで返答する ChatGPT API の仕組みを Node-RED でブラッシュアップしたメモ – 1ft-seabass.jp.MEMO</a></li>
+<li><a href="https://www.1ft-seabass.jp/memo/2023/05/04/chatgpt-understand-json-data-tips/" target="_blank">OpenAI ChatGPT で JSON データを見せて褒めてもらったメモ – 1ft-seabass.jp.MEMO</a></li>
+<li><a href="https://www.1ft-seabass.jp/memo/2023/06/19/chatgpt-http-api-like-json-response-tips-with-node-red-using-function-calling/" target="_blank">Node-RED で色名を聞くと RGB 値を JSON データで返答する ChatGPT API の仕組みを新機能 Function calling を導入したメモ – 1ft-seabass.jp.MEMO</a></li>
+</ul>
 
                                 
                                 </section>
@@ -404,7 +512,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"エクストラ","level":"1.13","depth":1,"previous":{"title":"トラブルシューティング","level":"1.12","depth":1,"path":"99-extra/98-troubleshooting.md","ref":"99-extra/98-troubleshooting.md","articles":[]},"dir":"ltr"},"config":{"plugins":["anchors","hide-published-with","copy-code-button","intopic-toc","back-to-top-button"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","mode":"nested","maxDepth":6,"isCollapsed":true,"isScrollspyActive":true,"visible":true,"label":"In this article"},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"back-to-top-button":{},"copy-code-button":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Azure Functions でつくる LINE Bot + OpenAI 社 ChatGPT AI ハンズオン","language":"ja","gitbook":"*","description":"Azure Functions でつくる LINE Bot + OpenAI 社 ChatGPT AI ハンズオン"},"file":{"path":"99-extra/99-extra-index.md","mtime":"2023-05-23T01:38:48.692Z","type":"markdown"},"gitbook":{"version":"3.7.4","time":"2023-06-25T05:06:01.994Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"エクストラ","level":"1.13","depth":1,"previous":{"title":"トラブルシューティング","level":"1.12","depth":1,"path":"99-extra/98-troubleshooting.md","ref":"99-extra/98-troubleshooting.md","articles":[]},"dir":"ltr"},"config":{"plugins":["anchors","hide-published-with","copy-code-button","intopic-toc","back-to-top-button"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","mode":"nested","maxDepth":6,"isCollapsed":true,"isScrollspyActive":true,"visible":true,"label":"In this article"},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"back-to-top-button":{},"copy-code-button":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Azure Functions でつくる LINE Bot + OpenAI 社 ChatGPT AI ハンズオン","language":"ja","gitbook":"*","description":"Azure Functions でつくる LINE Bot + OpenAI 社 ChatGPT AI ハンズオン"},"file":{"path":"99-extra/99-extra-index.md","mtime":"2023-06-25T06:13:15.218Z","type":"markdown"},"gitbook":{"version":"3.7.4","time":"2023-06-25T06:13:29.057Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
