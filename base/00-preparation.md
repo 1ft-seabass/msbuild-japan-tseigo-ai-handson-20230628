@@ -14,15 +14,47 @@
 
 ![e87f6ca928239a4f4318995f3000b692](https://i.gyazo.com/e87f6ca928239a4f4318995f3000b692.jpg)
 
-OpenAI 社のトップページ https://openai.com/ の右上のメニューから Sign up ボタンをクリックします。
+[OpenAI 社のトップページ](https://openai.com/)の右上のメニューから Sign up ボタンをクリックします。
 
 ![2fe8702eb8814bf040e8c19f977ef5a8](https://i.gyazo.com/2fe8702eb8814bf040e8c19f977ef5a8.png)
 
-Sign up ページが表示されるので、Email アドレスでアカウントを作成しましょう。
+さらにパスワードを設定し、Continueを押すと、メールが送信されます。
 
-![8f6cf00010c16d8d03172ac647273379](https://i.gyazo.com/8f6cf00010c16d8d03172ac647273379.png)
+![img](https://gyazo.com/bd9dcdba593bcb272dc2d99072520370.png)
 
-アカウントが作成できるとアプリの選択ページ https://platform.openai.com/apps が表示されるので API をクリックします。
+下記のようなメールが届きます。
+
+![img](https://gyazo.com/124872c2fc0a7f64a31eee463a7b729a.png)
+
+メールのVerify email addressをクリックするとメールアドレスが認証されました。
+
+![](https://gyazo.com/253a5ae39b635820b1648615670fb480.png)
+
+再度[ログインページ](https://chat.openai.com/auth/login)にアクセスし、先ほどのメールアドレスとパスワードを使用して、ログインしましょう。
+
+初ログインに成功すると、下記のような名前と生年月日の入力ページが表示されます。
+
+![img](https://gyazo.com/fbf6c39afc5a82deaf375edd76630555.png)
+
+名前と生年月日を入力すると次は、電話番号の入力を行います。
+
+![img](https://gyazo.com/30684ec04633bc9c67b276071e1e2a01.png)
+
+Secd codeをクリックするとOpenAIから6桁の認証コードが送られてきます。
+
+※皆さんは596196ではありません。
+
+![img](https://gyazo.com/52916d53b93b0795553808ed65e41473.png)
+
+送られてきた認証コードを下記の画面で入力します。
+
+![img](https://gyazo.com/3caf47b4dcdc0182d2ed8dfa9cf071f7.png)
+
+電話番号の認証に成功すると、ChatGPTの画面に映ります。
+
+![img](https://gyazo.com/49038171a1c26ad93ae3bcd41c0c06fe.png)
+
+次に[OpenAI Platform](https://platform.openai.com/)に移ります。アカウントが作成できているとアプリの選択ページが表示されます。これでOpenAIアカウントの準備は終了です。
 
 ![c23a9f0bd362823347f92d420e4ab185](https://i.gyazo.com/c23a9f0bd362823347f92d420e4ab185.png)
 
@@ -55,6 +87,7 @@ Microsoft または GitHub のアカウントでサインインするか、無�
 これらの無料のアカウントが正常に設定されたので、Azure portal のホーム ページが表示されるはずです。
 
 📝参考資料
+
 - 演習 - Azure アカウントを作成する - Training | Microsoft Learn
   - https://learn.microsoft.com/ja-jp/training/modules/create-an-azure-account/3-exercise-create-an-azure-account
 - Azure の基礎の概要 - Training | Microsoft Learn

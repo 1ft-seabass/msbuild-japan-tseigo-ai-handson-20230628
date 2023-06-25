@@ -127,7 +127,7 @@ BOT の設定をしていきます。
 
 つづいて、LINE公式アカウント機能の欄で、応答メッセージの横にある編集ボタンをクリックするとLINE公式アカウントマネージャーに移動します。
 
-![image](https://i.gyazo.com/ed0cdfa1c0f10b134ea45612aa7521bb.png)
+![0775861a69bf1f788fa3330f414d3dcd](https://i.gyazo.com/0775861a69bf1f788fa3330f414d3dcd.png)
 
 移動しました。
 
@@ -135,14 +135,16 @@ BOT の設定をしていきます。
 
 右メニューから応答設定をクリックします。
 
-![image](https://i.gyazo.com/d1f780f9dd135650333c0dc8501686be.png)
+![c203e2bf3f3191cdd09e422dcbe774a2](https://i.gyazo.com/c203e2bf3f3191cdd09e422dcbe774a2.png)
 
-- 応答メッセージ
+- チャット
   - オフ
 - あいさつメッセージ
   - オフ
 - Webhook
   - オン
+- 応答メッセージ
+  - オフ
 
 に設定します。
 
@@ -158,7 +160,7 @@ BOT の設定をしていきます。
 
 Webhookのオンはうまく反映されない場合があります。もう一度、右メニューから応答設定をクリックして、確認しましょう。
 
-![image](https://i.gyazo.com/e1acdc8c35cb5427786b5d3d8a2317fa.png)
+![1d3f1475df9fbc020a9eb73adf7ff66a](https://i.gyazo.com/1d3f1475df9fbc020a9eb73adf7ff66a.png)
 
 Webhook がオンになっていればOKです。
 
