@@ -148,6 +148,10 @@ Functions のエディタで変更してみましょう。
 田中の研究してるネタより、いくつかご紹介します。質問の作り方に触れたものも多いので、参考になると思います。
 
 - <a href="https://www.1ft-seabass.jp/memo/2023/03/13/chatgpt-http-api-like-json-response-tips1/" target="_blank">いい感じのエアコン設定温度を JSON データで返答し HTTP API 的に ChatGPT が答えてくれる質問例のメモ – 1ft-seabass.jp.MEMO</a>
+  - JSON データで返答するような仕組みも作ることができ、他の仕組みともつながりやすくなります。
 - <a href="https://www.1ft-seabass.jp/memo/2023/03/17/chatgpt-http-api-like-json-response-tips-with-node-red/" target="_blank">LED への RGB 値を JSON データで返答する ChatGPT API の仕組みを Node-RED でブラッシュアップしたメモ – 1ft-seabass.jp.MEMO</a>
+  - 実際にライト（LED）点灯のような動作をさせたくて質問をブラッシュアップした話です。ちゃんとこれで IoT のコントロールができました。 
 - <a href="https://www.1ft-seabass.jp/memo/2023/05/04/chatgpt-understand-json-data-tips/" target="_blank">OpenAI ChatGPT で JSON データを見せて褒めてもらったメモ – 1ft-seabass.jp.MEMO</a>
+  - そして JSON のデータを読んでくれて褒めてくれちゃったりします。なんか個人の日常データを褒めてくれたら楽しいですよね。
 - <a href="https://www.1ft-seabass.jp/memo/2023/06/19/chatgpt-http-api-like-json-response-tips-with-node-red-using-function-calling/" target="_blank">Node-RED で色名を聞くと RGB 値を JSON データで返答する ChatGPT API の仕組みを新機能 Function calling を導入したメモ – 1ft-seabass.jp.MEMO</a>
+  - そして、いままで JSON データで受け取るのは結構苦労していたのですが、この新機能 Function calling で、そのあたりが、最近強化されまして、今後も楽しみです！
