@@ -369,6 +369,30 @@
                                 <h1 id="トラブルシューティング"><a name="トラブルシューティング" class="plugin-anchor" href="#トラブルシューティング"><i class="fa fa-link" aria-hidden="true"></i></a>トラブルシューティング</h1>
 <p><img src="https://i.gyazo.com/11831fda9bf46e449dae5a98564c8a03.png" alt="11831fda9bf46e449dae5a98564c8a03"></p>
 <p>このページは、このハンズオンでのトラブルシューティングをまとめたページです。</p>
+<h2 id="funsions-のリアルタイムの実行結果を見たい"><a name="funsions-のリアルタイムの実行結果を見たい" class="plugin-anchor" href="#funsions-のリアルタイムの実行結果を見たい"><i class="fa fa-link" aria-hidden="true"></i></a>Funsions のリアルタイムの実行結果を見たい</h2>
+<p><img src="https://i.gyazo.com/d416e73bf2ba53db7f262b62fc10c52a.png" alt="d416e73bf2ba53db7f262b62fc10c52a"></p>
+<p>各トリガーの左メニューにモニターからコード内で書いた console.log やエラーメッセージの確認ができます。</p>
+<p>今回、LINE BOT につながっているトリガーに移動します。左メニューにモニターをクリックします。</p>
+<p><img src="https://i.gyazo.com/fc3bf0e79b4c28b931fd57e9f2543cce.png" alt="fc3bf0e79b4c28b931fd57e9f2543cce"></p>
+<p>ログをクリックします。</p>
+<p><img src="https://i.gyazo.com/c1fd8d46c75017222c7a51e3eb0fad3e.png" alt="c1fd8d46c75017222c7a51e3eb0fad3e"></p>
+<p>Application Insights に接続しています... となります。待ちます。</p>
+<p><img src="https://i.gyazo.com/330cd09bfe68264b6da4821e3d223075.png" alt="330cd09bfe68264b6da4821e3d223075"></p>
+<p>接続されましたとなったら、リアルタイムに確かめられます。</p>
+<p><img src="https://i.gyazo.com/3cba545bb6935ae120b58cd89735bc63.png" alt="3cba545bb6935ae120b58cd89735bc63"></p>
+<p>確かめた例です。</p>
+<h2 id="コード保存後、確認時に少し間が必要な場合も"><a name="コード保存後、確認時に少し間が必要な場合も" class="plugin-anchor" href="#コード保存後、確認時に少し間が必要な場合も"><i class="fa fa-link" aria-hidden="true"></i></a>コード保存後、確認時に少し間が必要な場合も</h2>
+<p><img src="https://i.gyazo.com/c96b79030362e4951c6650fd18acf473.png" alt="c96b79030362e4951c6650fd18acf473"></p>
+<p>コード保存後、確認時に少し反映が遅れるので、確認するまでに間が必要な場合もあります。たとえば、30 秒から 1 分くらい待ってためしてみましょう。</p>
+<h2 id="chatgpt-api-で設定できているのに-429-などのエラーが起きる"><a name="chatgpt-api-で設定できているのに-429-などのエラーが起きる" class="plugin-anchor" href="#chatgpt-api-で設定できているのに-429-などのエラーが起きる"><i class="fa fa-link" aria-hidden="true"></i></a>ChatGPT API で設定できているのに 429 などのエラーが起きる</h2>
+<p><img src="https://i.gyazo.com/36f44f4238722f1bcfc3a0e7f7dbd93d.png" alt="36f44f4238722f1bcfc3a0e7f7dbd93d"></p>
+<ul>
+<li>クレジットカードが未登録の場合</li>
+<li>無料期間が切れてクレジットカード登録が必要な場合</li>
+<li>Usage limit で設定した値よりも越えてしまっている場合</li>
+</ul>
+<p>などがあります。</p>
+<p>（なにかあれば更新中）</p>
 
                                 
                                 </section>
@@ -412,7 +436,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"トラブルシューティング","level":"1.12","depth":1,"next":{"title":"エクストラ","level":"1.13","depth":1,"path":"99-extra/99-extra-index.md","ref":"99-extra/99-extra-index.md","articles":[]},"previous":{"title":"LINE Bot で ChatGPT 応答を試す","level":"1.11","depth":1,"path":"09-chatgpt-check.md","ref":"09-chatgpt-check.md","articles":[]},"dir":"ltr"},"config":{"plugins":["anchors","hide-published-with","copy-code-button","intopic-toc","back-to-top-button"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","mode":"nested","maxDepth":6,"isCollapsed":true,"isScrollspyActive":true,"visible":true,"label":"In this article"},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"back-to-top-button":{},"copy-code-button":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Azure Functions でつくる LINE Bot + OpenAI 社 ChatGPT AI ハンズオン","language":"ja","gitbook":"*","description":"Azure Functions でつくる LINE Bot + OpenAI 社 ChatGPT AI ハンズオン"},"file":{"path":"99-extra/98-troubleshooting.md","mtime":"2023-06-12T06:14:35.949Z","type":"markdown"},"gitbook":{"version":"3.7.4","time":"2023-06-25T10:30:21.297Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"トラブルシューティング","level":"1.12","depth":1,"next":{"title":"エクストラ","level":"1.13","depth":1,"path":"99-extra/99-extra-index.md","ref":"99-extra/99-extra-index.md","articles":[]},"previous":{"title":"LINE Bot で ChatGPT 応答を試す","level":"1.11","depth":1,"path":"09-chatgpt-check.md","ref":"09-chatgpt-check.md","articles":[]},"dir":"ltr"},"config":{"plugins":["anchors","hide-published-with","copy-code-button","intopic-toc","back-to-top-button"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","mode":"nested","maxDepth":6,"isCollapsed":true,"isScrollspyActive":true,"visible":true,"label":"In this article"},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"back-to-top-button":{},"copy-code-button":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Azure Functions でつくる LINE Bot + OpenAI 社 ChatGPT AI ハンズオン","language":"ja","gitbook":"*","description":"Azure Functions でつくる LINE Bot + OpenAI 社 ChatGPT AI ハンズオン"},"file":{"path":"99-extra/98-troubleshooting.md","mtime":"2023-06-28T01:55:36.017Z","type":"markdown"},"gitbook":{"version":"3.7.4","time":"2023-06-28T01:57:14.249Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
