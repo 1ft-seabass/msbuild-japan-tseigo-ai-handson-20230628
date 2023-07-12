@@ -14,5 +14,6 @@
 * [ChatGPT 用 LINE Bot 用の HTTP トリガー作成](07-create-http-trigger-for-chatgpt.md)
 * [ChatGPT API の仕組みの反映](08-line-bot-add-chatgpt.md)
 * [LINE Bot で ChatGPT 応答を試す](09-chatgpt-check.md)
+* [あとかたづけ](98-finish-work.md)
 * [トラブルシューティング](99-extra/98-troubleshooting.md)
 * [エクストラ](99-extra/99-extra-index.md)
