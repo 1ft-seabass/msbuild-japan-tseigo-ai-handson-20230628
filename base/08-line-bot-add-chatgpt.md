@@ -24,7 +24,7 @@ const configLINE = {
 const client = new line.Client(configLINE);
 
 // OpenAI ライブラリを読み込む
-const { Configuration, OpenAIApi } = require("openai");
+const OpenAI = require("openai");
 
 // OpenAI の ChatGPT API の API キー設定
 const configOpenAI = {
@@ -32,8 +32,7 @@ const configOpenAI = {
 };
 
 // OpenAI ライブラリを呼び出しつつ設定
-const configuration = new Configuration(configOpenAI);
-const openai = new OpenAIApi(configuration);
+const openai = new OpenAI(configOpenAI);
 
 module.exports = async function (context, req) {
     context.log('LINE Bot start...');
@@ -45,20 +44,20 @@ module.exports = async function (context, req) {
             // ChatGPT API に質問する
             let responseChatGPT;
             try {
-                responseChatGPT = await openai.createChatCompletion({
+                responseChatGPT = await openai.chat.completions.create({
                     model: "gpt-3.5-turbo",
                     messages: [
                         {role: "user", content: currentMesssage}
                     ],
                 });
-                context.log(responseChatGPT.data.choices[0].message);
+                context.log(responseChatGPT.choices[0].message);
             } catch(e){
                 context.log(e);
             }
             // 実際に LINE に返答する処理
             if (req.body.events[0].replyToken) {
                 // 返答の 0 番目を取得
-                const contentFromChatGPT = responseChatGPT.data.choices[0].message.content;
+                const contentFromChatGPT = responseChatGPT.choices[0].message.content;
                 // 返答
                 client.replyMessage(req.body.events[0].replyToken, {
                     "type": "text",
